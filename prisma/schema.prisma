@@ -1,0 +1,157 @@
+// // This is your Prisma schema file,
+// // learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  // directUrl = env("DIRECT_URL")
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String  @map("user_id")
+  type               String
+  provider           String
+  providerAccountId  String  @map("provider_account_id")
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String? @db.Text
+  session_state      String?
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+  
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@map("sessions")
+}
+ 
+model User {
+  id            String   @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime? @map("email_verified")
+  image         String?
+  password      String?
+  role          String    @default("user")
+  accounts      Account[]
+  sessions      Session[]
+  datas         Data[]
+  bekerja       AlumniBekerja[]
+  wirausaha     AlumniBerwirausaha[]
+  kuliah        AlumniKuliah[]
+ 
+  @@map("users")
+}
+ 
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+ 
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model Data {
+  id            String      @id      @default(cuid())
+  name          String
+  tempatLahir   String
+  tanggalLahir  Int
+  kelamin       Boolean
+  tamatTahun    Int
+  jurusan       String
+  alamat        String
+  tlp           Int
+  email         String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime   @updatedAt
+  userId        String
+  user  User @relation(fields: [userId], references: [id], onDelete:  Cascade)
+}
+
+model AlumniBekerja {
+  id              String    @id     @default(cuid())
+  tempatKerja     String
+  alamat          String
+  jabatan         String
+  statusPekerjaan Boolean
+  penghasilan     Int
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  userId        String
+  user  User @relation(fields: [userId], references: [id], onDelete:  Cascade)
+}
+
+model AlumniBerwirausaha {
+  id             String     @id    @default(cuid())
+  usaha          String
+  penghasilan    Int
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  userId        String
+  user  User @relation(fields: [userId], references: [id], onDelete:  Cascade)
+}
+
+model AlumniKuliah {
+  id            String      @id     @default(cuid())
+  kuliah        String
+  alamat        String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  userId        String
+  user  User @relation(fields: [userId], references: [id], onDelete:  Cascade)
+}
+
+
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider  = "postgresql"
+//   url  	    = env("DATABASE_URL")
+// }
+
+// model Alumni {
+//   id             Int       @id @default(autoincrement())
+//   name           String
+//   email          String    @unique
+//   graduationYear Int
+//   tracerStudies  TracerStudy[]
+// }
+
+// model TracerStudy {
+//   id          Int       @id @default(autoincrement())
+//   alumniId    Int       @map("alumni_id")
+//   alumni      Alumni    @relation(fields: [alumniId], references: [id])
+//   employment  EmploymentStatus
+//   company     String?   // Optional: Only applicable if employed
+//   position    String?   // Optional: Job title
+//   createdAt   DateTime  @default(now())
+// }
+
+// enum EmploymentStatus {
+//   EMPLOYED
+//   UNEMPLOYED
+//   ENTREPRENEUR
+//   STUDYING
+// }
+
+

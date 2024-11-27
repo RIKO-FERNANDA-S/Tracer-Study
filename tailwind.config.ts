@@ -12,7 +12,20 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      backgroundColor: {
+        button: "#BDC3C7"
+      },
+      fontFamily: {
+        'poppins' : ['"Poppins", sans-serif']
+      },
+      backgroundImage: {
+        "bgAbout1" : "./public/img/T5.jpeg",
+        "bgAbout2" : "./public/img/T7.jpeg",
+
+      }
     },
   },
-  plugins: [],
+  plugins: [
+    require("daisyui")
+  ],
 } satisfies Config;
