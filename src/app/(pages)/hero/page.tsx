@@ -1,19 +1,20 @@
-"use client";
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import "boxicons";
-import bgHero from "../../../public/img/hero.jpg";
-import imgHero from "../../../public/img/1.png";
+import bgHero from "../../../../public/img/hero.jpg";
+import imgHero from "../../../../public/img/1.png";
 import Navbar from "@/components/layouts/navbarHome";
-import Tentang from "./tentang";
-import Kontak from "./kontak";
-import Footer from "./footer";
+import Tentang from "@/components/layouts/tentang";
+import Kontak from "@/components/layouts/kontak";
+import Footer from "@/components/layouts/footer";
 
-function Hero() {
+// const Tentang = dynamic(() => import('./tentang'), {ssr: false})
+// const Kontak = dynamic(() => import('./kontak'), {ssr: false})
+// const Footer = dynamic(() => import('./footer'), {ssr: false})
+
+async function Hero() {
   return (
     <main className="font-poppins">
-      <Navbar />
+      <Navbar/>
       <section className="w-full h-screen justify-center flex flex-col " id="#beranda">
         <Image
           src={bgHero}

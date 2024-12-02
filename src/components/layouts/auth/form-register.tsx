@@ -1,10 +1,9 @@
 "use client";
 import { useActionState } from "react";
-import Link from "next/link";
 import { signUpCredentials } from "@/lib/action";
 import { RegisterButton } from "@/components/fragments/button";
 
-export default function Register() {
+export default function FormRegister() {
   const [state, formAction] = useActionState(signUpCredentials, null);
   return (
     <div className="flex h-screen items-center justify-center bg-gray-100">

@@ -3,8 +3,9 @@ import { RegisterSchema, SignInSchema } from "./zod"
 import { hashSync } from "bcrypt-ts"
 import { prisma } from "./prisma"
 import { redirect } from "next/navigation"
-import { signIn } from "../../auth"
+import { signIn, signOut } from "../../auth"
 import { AuthError } from "next-auth"
+import { revalidatePath } from "next/cache"
 
 
 
@@ -66,3 +67,7 @@ export const signInCredentials = async(prevState: unknown, formData: FormData) =
 };
 }
 
+
+export const signOutCredentials = async() => {
+    await signOut()
+}

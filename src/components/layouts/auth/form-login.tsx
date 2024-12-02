@@ -3,7 +3,7 @@ import { LoginButton } from "@/components/fragments/button";
 import { signInCredentials } from "@/lib/action";
 import { useActionState } from "react";
 
-export default function Login() {
+export default function FormLogin() {
   const [state, formAction] = useActionState(signInCredentials, null);
   return (
     <div className="flex h-screen items-center justify-center bg-gray-100">
