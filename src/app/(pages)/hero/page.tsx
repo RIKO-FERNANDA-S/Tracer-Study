@@ -14,7 +14,7 @@ const Tentang = dynamic(() => import('@/components/layouts/tentang'), {ssr: fals
 const Kontak = dynamic(() => import('@/components/layouts/kontak'), {ssr: false})
 const Footer = dynamic(() => import('@/components/layouts/footer'), {ssr: false})
 
-async function Hero() {
+ function Hero() {
   return (
     <main className="font-poppins">
       <Navbar/>

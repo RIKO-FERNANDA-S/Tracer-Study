@@ -30,9 +30,10 @@ export const signUpCredentials = async(prevState: unknown, formData: FormData) =
                 password: hashedPassword
             }
         })
-    }catch(error){
-        return{message: "Gagal daftar, user sudah ada"}
-        console.log(error)
+    }catch(err){
+        if(err){
+            return{message: "Gagal daftar, user sudah ada"}
+        }
     }
     redirect("/login")
 }
