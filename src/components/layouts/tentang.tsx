@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Img1 from "../../../public/img/T5.jpeg";
-import Img2 from "../../../public/img/T7.jpeg";
 import Link from "next/link";
 
 function Tentang() {

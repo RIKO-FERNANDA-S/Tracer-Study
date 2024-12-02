@@ -45,17 +45,17 @@ export const LogoutButton =  () => {
 
   )
 }
-export const LogoutButtonHome =  () => { 
-  return(
-      <div className="flex w-max justify-center items-center ">
-        <button
-          onClick={signOutCredentials}
-          className=" flex justify-center items-center text-red-500"
-        >
-          <i className='bx bx-log-out-circle bx-md'></i>
-        </button>
-      </div>
+// export const LogoutButtonHome =  () => { 
+//   return(
+//       <div className="flex w-max justify-center items-center ">
+//         <button
+//           onClick={signOutCredentials}
+//           className=" flex justify-center items-center text-red-500"
+//         >
+//           <i className='bx bx-log-out-circle bx-md'></i>
+//         </button>
+//       </div>
 
-  )
-}
+//   )
+// }
  

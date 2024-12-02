@@ -5,7 +5,6 @@ import { prisma } from "./prisma"
 import { redirect } from "next/navigation"
 import { signIn, signOut } from "../../auth"
 import { AuthError } from "next-auth"
-import { revalidatePath } from "next/cache"
 
 
 
@@ -33,6 +32,7 @@ export const signUpCredentials = async(prevState: unknown, formData: FormData) =
         })
     }catch(error){
         return{message: "Gagal daftar, user sudah ada"}
+        console.log(error)
     }
     redirect("/login")
 }

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Logo from "../../../public/imgLogo/mawalogox-1536x300.png";
 import Link from "next/link";
 import { auth } from "../../../auth";
-import { LogoutButtonHome } from "@/components/fragments/button";
 import { signOutCredentials } from "@/lib/action";
 
 const Navbar = async () => {
