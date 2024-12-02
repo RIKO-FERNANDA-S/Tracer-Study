@@ -38,6 +38,6 @@
     "typescript": "^5"
   },
   "overrides": {
-     "@auth/core": "^1.2.0"
+    "@auth/core": "^0.37.4"
   }
 }
