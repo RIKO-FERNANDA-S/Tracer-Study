@@ -1,4 +1,4 @@
-"use client"
+import { SessionProvider } from "next-auth/react";
 import "./globals.css";
 
 // import type { Metadata } from "next";
@@ -22,7 +22,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`antialiased text-black bg-white`}>
-        <main>{children}</main>
+        <SessionProvider>
+          <main>{children}</main>
+        </SessionProvider>
       </body>
     </html>
   );

@@ -1,5 +1,4 @@
-
-import Hero from "@/app/(pages)/hero/page"
+import Hero from "@/app/(pages)/hero/page";
 // import dynamic from "next/dynamic";
 
 // const Hero = dynamic(() => import("@/components/layouts/hero"))
@@ -7,8 +6,7 @@ import Hero from "@/app/(pages)/hero/page"
 export default function Home() {
   return (
     <main>
-      <Hero/>
-      
+      <Hero />
     </main>
   );
 }

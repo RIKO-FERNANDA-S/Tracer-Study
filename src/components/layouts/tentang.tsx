@@ -1,4 +1,4 @@
-import React from "react";
+"use client"
 import Image from "next/image";
 import Img1 from "../../../public/img/T5.jpeg";
 import Link from "next/link";

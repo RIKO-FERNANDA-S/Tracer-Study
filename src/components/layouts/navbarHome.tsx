@@ -1,11 +1,12 @@
+"use client"
 import Image from "next/image";
 import Logo from "../../../public/imgLogo/mawalogox-1536x300.png";
 import Link from "next/link";
-import { auth } from "../../../auth";
+import { useSession } from "next-auth/react";
 import { signOutCredentials } from "@/lib/action";
 
-const Navbar = async () => {
-  const session = await auth();
+const Navbar = () => {
+  const {data: session} = useSession()
 
   return (
     <header className="w-full h-max hidden md:flex justify-center ">
