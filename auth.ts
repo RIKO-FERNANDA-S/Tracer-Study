@@ -68,5 +68,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       session.user.role = token.role;
       return session;
     }
-  }
+  },
+  trustHost: true,
 })
