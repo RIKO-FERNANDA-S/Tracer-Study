@@ -1,15 +1,18 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import bgHero from "../../../../public/img/hero.jpg";
 import imgHero from "../../../../public/img/1.png";
+// import dynamic from "next/dynamic";
 import Navbar from "@/components/layouts/navbarHome";
 import Tentang from "@/components/layouts/tentang";
 import Kontak from "@/components/layouts/kontak";
 import Footer from "@/components/layouts/footer";
 
-// const Tentang = dynamic(() => import('./tentang'), {ssr: false})
-// const Kontak = dynamic(() => import('./kontak'), {ssr: false})
-// const Footer = dynamic(() => import('./footer'), {ssr: false})
+// const Navbar = dynamic(() => import('@/components/layouts/navbarHome'), {ssr: true})
+// const Tentang = dynamic(() => import('@/components/layouts/tentang'), {ssr: false})
+// const Kontak = dynamic(() => import('@/components/layouts/kontak'), {ssr: false})
+// const Footer = dynamic(() => import('@/components/layouts/footer'), {ssr: false})
 
 async function Hero() {
   return (
