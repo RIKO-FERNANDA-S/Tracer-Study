@@ -30,7 +30,7 @@ export default function FormLogin() {
                 type="email"
                 id="email"
                 name="email"
-                className="pl-10 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className="pl-10 block w-full px-3 py-2 border bg-white border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 placeholder="Enter your email"
                 required
               />
@@ -54,7 +54,7 @@ export default function FormLogin() {
                 type="password"
                 id="password"
                 name="password"
-                className="pl-10 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className="pl-10 block w-full px-3 py-2 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 placeholder="Enter your password"
                 required
               />

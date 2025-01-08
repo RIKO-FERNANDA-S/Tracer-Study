@@ -16,7 +16,8 @@ export default {
         button: "#BDC3C7"
       },
       fontFamily: {
-        'poppins' : ['"Poppins", sans-serif']
+        'Poppins' : ['"Poppins"', 'sans-serif'],
+        'Roboto' : ['"Roboto"', 'sans-serif'],
       },
       backgroundImage: {
         "bgAbout1" : "./public/img/T5.jpeg",
@@ -26,6 +27,10 @@ export default {
     },
   },
   plugins: [
-    require("daisyui")
+    require("daisyui"),
+    require("tailwind-scrollbar")
   ],
+  varians: {
+    scrollbar :['rounded', 'hover'],
+  }
 } satisfies Config;

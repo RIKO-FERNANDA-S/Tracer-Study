@@ -70,7 +70,7 @@ function Kontak() {
           </form>
         </section>
 
-        <section className="w-full md:w-2/5 flex flex-col h-full justify-center gap-10">
+        <section className="w-full md:w-2/5 flex flex-col h-full justify-center text-center sm:text-start gap-10">
           <div className="flex justify-center w-full items-center text-justify">
             <h3 className="text-xl">
               Jika Anda memiliki pertanyaan, masukan, atau memerlukan bantuan
@@ -79,19 +79,19 @@ function Kontak() {
           </div>
           <div className="flex flex-col justify-center md:gap-3">
             <div className="flex flex-col w-full p-6 gap-3">
-              <h2 className="text-xl  font-bold">Phone</h2>
-              <div className="flex gap-5  items-center">
+              <h2 className="text-xl font-bold">Phone</h2>
+              <div className="flex flex-col sm:flex-row gap-5  items-center">
                 <i className="bx bx-phone bx-lg "></i>
                 <div className="flex flex-col">
-                  <h2 className="text- mb-2">MAWA 1 : 031-8672377</h2>
-                  <h2 className="text-">MAWA 2 : 031-8678854</h2>
+                  <h2 className="text-lg mb-2">MAWA 1 : 031-8672377</h2>
+                  <h2 className="text-lg">MAWA 2 : 031-8678854</h2>
                 </div>
               </div>
             </div>
 
             <div className="flex flex-col w-full p-6 gap-3">
               <h2 className="text-xl  font-bold">Email</h2>
-              <div className="flex gap-5 items-center">
+              <div className="flex flex-col sm:flex-row gap-5 items-center">
                 <i className="bx bx-envelope bx-lg "></i>
                 <div className="flex flex-col ">
                 <h2 className="text-lg mb-2">smkdarmasiswa1sidoarjo@gmail.com</h2>
@@ -102,7 +102,7 @@ function Kontak() {
 
             <div className="flex flex-col p-6 w-full gap-3">
               <h2 className="text-xl  font-bold">Alamat</h2>
-              <div className="flex gap-5 items-center">
+              <div className="flex flex-col sm:flex-row gap-5 items-center">
               <i className="bx bx-map-alt bx-lg"></i>
               <h2 className="text-lg">
                 Jl. Wijaya Kusuma No.9 - 11, Bebek, Berbek, Kec. Waru, Kabupaten
