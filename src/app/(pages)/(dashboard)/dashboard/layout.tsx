@@ -5,9 +5,9 @@ export default function Layout({
     children: React.ReactNode
   }) {
     return (
-      <main className="flex">
+      <main className="flex bg-gray-50">
         <NavSide/>
-        <div className="w-full">
+        <div className="w-full overflow-y-scroll h-screen">
         {children}
         </div>
       </main>

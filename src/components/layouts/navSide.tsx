@@ -40,12 +40,12 @@ function page() {
                 SMK MAWA 1
               </h1>
               <ul className="collapse-content flex flex-col gap-2 list-disc">
-                <Link href="/dashboard/mawa1">
+                <Link href="/dashboard/mawa1/tkjt">
                   <li className="mx-1 cursor-pointer">
                     Teknik Komputer dan jaringan
                   </li>
                 </Link>
-                <Link href="/dashboard/mawa1">
+                <Link href="/dashboard/mawa1/tkr">
                   <li className="mx-1 cursor-pointer">
                     Teknik Kendaraan Ringan
                   </li>

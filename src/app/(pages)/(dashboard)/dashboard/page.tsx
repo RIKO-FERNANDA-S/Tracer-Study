@@ -25,7 +25,7 @@ async function Dashboard() {
   }
 
   return (
-    <main className="w-full h-screen bg-gray-50">
+    <main className="w-full h-screen ">
       <section className="w-full h-screen">
         <div className="w-full h-full flex flex-col gap-8 ">
           <NavDashboard />
@@ -33,7 +33,7 @@ async function Dashboard() {
             <section className="h-max w-full flex justify-between items-center px-8 pb-3">
               <h1 className="text-xl">Data Alumni</h1>
               <div className="flex items-center gap-3">
-                <button className="flex items-center">
+                <button className="flex items-center gap-2">
                   <h2 className="text-lg">Tahun 2024</h2>
                   <i className="bx bx-chevron-down bx-sm"></i>
                 </button>
@@ -66,10 +66,11 @@ async function Dashboard() {
                     <Image src={Mawa2} alt="mawa 1" className="w-28 "></Image>
                   </div>
                   <div className="flex flex-col justify-center gap-1 w-full">
-                    <div className="flex justify-between items-center w-full">
+                    <Link href="/dashboard/mawa2" className="flex justify-between items-center w-full">
+                      
                       <h1 className="text-lg">SMK MAWA 2</h1>
                       <i className="bx bx-chevron-right bx-sm"></i>
-                    </div>
+                    </Link>
                     <div>
                       <h1 className="text-4xl">
                         2000<span className="text-lg">/siswa</span>
@@ -82,10 +83,10 @@ async function Dashboard() {
                     <Image src={SMA} alt="mawa 1" className="w-24 "></Image>
                   </div>
                   <div className="flex flex-col justify-center gap-1 w-full">
-                    <div className="flex justify-between items-center w-full">
+                    <Link href="/dashboard/sma" className="flex justify-between items-center w-full">
                       <h1 className="text-lg">SMA PLUS</h1>
                       <i className="bx bx-chevron-right bx-sm"></i>
-                    </div>
+                    </Link>
                     <div>
                       <h1 className="text-4xl">
                         2000<span className="text-lg">/siswa</span>
@@ -95,85 +96,6 @@ async function Dashboard() {
                 </div>
               </div>
 
-              {/* Mawa 1 */}
-              {/* <article className="w-full h-20 xl:h-44 flex gap-5">
-                <div className="w-3/12 h-full bg-sky-50 shadow-lg justify-around rounded-xl flex flex-col p-5 ">
-                  <span className="flex items-end">
-                    <h1 className="font-semibold text-3xl">300 Total Peserta</h1>
-                  </span>
-                  <span>
-                  <h1 className="font-normal text-xl">Teknik KJT</h1>
-                  <p className="font-extralight text-xl">290 Alumni Input</p>
-                  </span>
-                </div>
-                <div className="w-3/12 h-full bg-sky-50 shadow-lg rounded-xl flex flex-col p-5 justify-around">
-                  <span className="flex items-end">
-                    <h1 className="font-semibold text-3xl">300 Total Peserta</h1>
-                  </span>
-                  <span>
-                  <h1 className="font-normal text-xl">Teknik Permesinan</h1>
-                  <p className="font-extralight text-xl">290 Alumni Input</p>
-                  </span>
-                </div>
-                <div className="w-3/12 h-full bg-sky-50 shadow-lg rounded-xl flex flex-col p-5 justify-around">
-                  <span className="flex items-end">
-                    <h1 className="font-semibold text-3xl">300 Total Peserta</h1>
-                  </span>
-                  <span>
-                  <h1 className="font-normal text-xl">Teknik BSM</h1>
-                  <p className="font-extralight text-xl">290 Alumni Input</p>
-                  </span>
-                </div>
-                <div className="w-3/12 h-full bg-sky-50 shadow-lg rounded-xl flex flex-col p-5 justify-around">
-                  <span className="flex items-end">
-                    <h1 className="font-semibold text-3xl">300 Total Peserta</h1>
-                  </span>
-                  <span>
-                  <h1 className="font-normal text-xl">Teknik KR</h1>
-                  <p className="font-extralight text-xl">290 Alumni Input</p>
-                  </span>
-                </div>
-              </article> */}
-
-              {/* Mawa 2 */}
-              {/* <article className="w-full h-44 flex gap-5">
-                <div className="w-3/12 h-full bg-sky-50 shadow-lg rounded-xl flex flex-col p-5 justify-around">
-                  <span className="flex items-end">
-                    <h1 className="font-semibold text-3xl">300 Total Peserta</h1>
-                  </span>
-                  <span>
-                  <h1 className="font-normal text-xl">Akutansi</h1>
-                  <p className="font-extralight text-xl">290 Alumni Input</p>
-                  </span>
-                </div>
-                <div className="w-3/12 h-full bg-sky-50 shadow-lg rounded-xl flex flex-col p-5 justify-around">
-                  <span className="flex items-end">
-                    <h1 className="font-semibold text-3xl">300 Total Peserta</h1>
-                  </span>
-                  <span>
-                  <h1 className="font-normal text-xl">MP</h1>
-                  <p className="font-extralight text-xl">290 Alumni Input</p>
-                  </span>
-                </div>
-                <div className="w-3/12 h-full bg-sky-50 shadow-lg rounded-xl flex flex-col p-5 justify-around">
-                  <span className="flex items-end">
-                    <h1 className="font-semibold text-3xl">300 Total Peserta</h1>
-                  </span>
-                  <span>
-                  <h1 className="font-normal text-xl">DKV</h1>
-                  <p className="font-extralight text-xl">290 Alumni Input</p>
-                  </span>
-                </div>
-                <div className="w-3/12 h-full bg-sky-50 shadow-lg rounded-xl flex flex-col p-5 justify-around">
-                  <span className="flex items-end">
-                    <h1 className="font-semibold text-3xl">300 Total Peserta</h1>
-                  </span>
-                  <span>
-                  <h1 className="font-normal text-xl">LPKKK</h1>
-                  <p className="font-extralight text-xl">290 Alumni Input</p>
-                  </span>
-                </div>
-              </article> */}
             </section>
 
             <section className="w-full h-max flex py-5">
