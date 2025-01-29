@@ -1,9 +1,24 @@
-import React from 'react'
+"use client";
+import React from "react";
+import NavbarDashTable from "@/components/layouts/navbar/navbarDashTable";
+import DataTable, { columns } from "@/components/layouts/dataTable";
+export type User = {
+  id: string;
+  email: string;
+  name: string;
+};
 
-function page() {
+
+export default function Mawa1() {
+
   return (
-    <div>page</div>
-  )
-}
+    <main className="">
 
-export default page
+      <section>
+        <div className="w-full">
+          <DataTable />
+        </div>
+      </section>
+    </main>
+  );
+}

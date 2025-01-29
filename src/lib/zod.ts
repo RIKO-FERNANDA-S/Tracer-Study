@@ -29,15 +29,11 @@ export const RegisterSchema = object({
   path: ["ConfirmPassword"],
 });
 
-export const CreateDataJurusanSchema = object({
-  name: string().min(1, "Berikan nama yang lebih panjang lagi"),
-  slug: string().min(1, "Berikan nama yang lebih panjang lagi"),
-});
+
 
 export const CreateDataSchema = object({
-  name: string().min(3, "Berikan nama lengkap kamu"),
-  tempatLahir: string().min(3, "Berikan lebih lengkap lagi"),
-  tanggalLahir: string()
+  placeOfBirth: string().min(3, "Berikan lebih lengkap lagi"),
+  dateOfBirth: string()
     .refine((val) => !isNaN(val as unknown as number))
     .transform((val, ctx) => {
       const parsed = parseInt(val);
@@ -50,8 +46,8 @@ export const CreateDataSchema = object({
       }
       return parsed;
     }),
-  kelamin: boolean(),
-  tamatTahun: string()
+  gender: string(),
+  tahunLulus: string()
   .min(4, { message: "nmor kurang bro" })
   .max(12, { message: "jangan banyak banyak" })
   .refine((val) => !isNaN(val as unknown as number))
@@ -66,25 +62,19 @@ export const CreateDataSchema = object({
     }
     return parsed;
   }),
-  jurusan: string(),
-  alamat: string().min(7, "Berikan alamat yang lebih lengkap lagi"),
-  tlp: string()
-    .min(12, { message: "nmor kurang bro" })
-    .max(12, { message: "jangan banyak banyak" })
-    .refine((val) => !isNaN(val as unknown as number))
-    .transform((val, ctx) => {
-      const parsed = parseInt(val);
-      if (isNaN(parsed)) {
-        ctx.addIssue({
-          code: ZodIssueCode.custom,
-          message: "Bukan angka",
-        });
-        return NEVER;
-      }
-      return parsed;
-    }),
-  email: string().email("Email salah"),
-  user: string(),
+  noTelphone: string().min(2, {message: "kurang nomor"}).refine((val) => !isNaN(val as unknown as number)).transform((val, ctx) => {
+    const parsed = parseInt(val);
+    if(isNaN(parsed)){
+      ctx.addIssue({
+        code: ZodIssueCode.custom,
+        message: "bukan ak=ngka"
+      });
+      return NEVER;
+    }
+    return parsed;
+  }),
+  major: string(),
+  address: string().min(7, "Berikan alamat yang lebih lengkap lagi"),
 });
 
 export const CreateAlumniKuliahSchema = object({

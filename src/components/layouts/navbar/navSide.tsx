@@ -1,14 +1,16 @@
-"use client";
+"use client"
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "../../../public/imgLogo/mawalogox-1536x300.png";
+import Logo from "../../../../public/imgLogo/mawalogox-1536x300.png";
 import { usePathname } from "next/navigation";
-import Pp from "../../../public/imgLogo/user.jpg";
+import Pp from "../../../../public/imgLogo/user.jpg";
 import { signOutCredentials } from "@/lib/action";
+import { useSession } from "next-auth/react";
 
-function page() {
+function Navside() {
   const pathnmae = usePathname();
+  const {data: session} = useSession()
 
   return (
     <main className="h-screen flex flex-col py-5 sticky w-1/5 bg-gray-50 text-black border-r-2 border-black overflow-scroll scrollbar-none justify-between">
@@ -40,22 +42,22 @@ function page() {
                 SMK MAWA 1
               </h1>
               <ul className="collapse-content flex flex-col gap-2 list-disc">
-                <Link href="/dashboard/mawa1/tkjt">
+                <Link href="/dashboard/mawa1/kelas/tkjt">
                   <li className="mx-1 cursor-pointer">
                     Teknik Komputer dan jaringan
                   </li>
                 </Link>
-                <Link href="/dashboard/mawa1/tkr">
+                <Link href="/dashboard/mawa1/kelas/tkr">
                   <li className="mx-1 cursor-pointer">
                     Teknik Kendaraan Ringan
                   </li>
                 </Link>
-                <Link href="/dasboard/mawa1">
+                <Link href="/dashboard/mawa1/kelas/tbsm">
                 <li className="mx-1 cursor-pointer">
                   Teknik Bisnis Sepeda Motor
                 </li>
                 </Link>
-                <Link href="/dashboard/mawa1">
+                <Link href="/dashboard/mawa1/kelas/tp">
                 <li className="mx-1 cursor-pointer">Teknik Permesinan</li>
                 </Link>
               </ul>
@@ -66,18 +68,18 @@ function page() {
                 SMK MAWA 2
               </h1>
               <ul className="collapse-content flex flex-col gap-2 list-disc">
-                <Link href="/dashboard/mawa2">
+                <Link href="/dashboard/mawa2/kelas/akl">
                 <li className="mx-1 cursor-pointer">Akutansi</li>
                 </Link>
-                <Link href="/dashboard/mawa2">
+                <Link href="/dashboard/mawa2/kelas/mp">
                 <li className="mx-1 cursor-pointer">Menejemen Perkantoran</li>
                 </Link>
-                <Link href="/dashboard/mawa2">
+                <Link href="/dashboard/mawa2/kelas/dkv">
                 <li className="mx-1 cursor-pointer">
                   Desain Komunikasi Visual
                 </li>
                 </Link>
-                <Link href="/dashboard/mawa2">
+                <Link href="/dashboard/mawa2/kelas/lpkkk">
                 <li className="mx-1 cursor-pointer">
                   Layanan Penunjang Kefarmasian Klinis dan Komunitas
                 </li>
@@ -87,7 +89,7 @@ function page() {
             </div>
             <div className=" ">
               
-              <Link href="/dashboard/sma">
+              <Link href="/dashboard/smaplus/sma">
               <h1 className="collapse-title text-md font-normal ">SMA MAWA</h1>
               </Link>
             </div>
@@ -106,7 +108,7 @@ function page() {
 
       <div className="w-full h-max px-5 mt-5">
         <div className="w-full flex flex-col gap-8">
-          <div className="w-full h-max flex gap-5 items-center">
+          <div onClick={signOutCredentials} className="w-full h-max cursor-pointer flex gap-5 items-center">
           <i className='bx bx-log-out bx-sm'></i>
           <h1 className="text-xl">Logout</h1>
           </div>
@@ -115,8 +117,8 @@ function page() {
             <div className="flex gap-3 items-center">
               <Image src={Pp} alt="profil" className="w-12 rounded-full"></Image>
               <div className="">
-                <h1 className="text-md font-medium">Nama</h1>
-                <h1 className="text-sm font-light">Email@gmail.com</h1>
+                <h1 className="text-md font-medium capitalize">{session?.user.name}</h1>
+                <h1 className="text-sm font-light lowercase text-wrap">{session?.user.email}</h1>
               </div>
             </div>
           <h1></h1>
@@ -127,4 +129,4 @@ function page() {
   );
 }
 
-export default page;
+export default Navside;

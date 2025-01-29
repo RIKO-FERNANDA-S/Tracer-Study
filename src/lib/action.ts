@@ -1,5 +1,5 @@
 "use server";
-import { RegisterSchema, SignInSchema, CreateDataSchema, CreateDataJurusanSchema, CreateAlumniKuliahSchema } from "./zod";
+import { RegisterSchema, SignInSchema, CreateDataSchema, CreateAlumniKuliahSchema } from "./zod";
 import { hashSync } from "bcrypt-ts";
 import { prisma } from "./prisma";
 import { redirect } from "next/navigation";
@@ -107,8 +107,6 @@ export const signOutCredentials = async () => {
 // };
 
 
-
-
 export const createData = async (prevState: any,formData: FormData) => {
   const validateFields = CreateDataSchema.safeParse(Object.fromEntries(formData.entries()))
 
@@ -118,22 +116,18 @@ export const createData = async (prevState: any,formData: FormData) => {
     };
   }
 
-  
 
-  const { name,tamatTahun, tempatLahir, tanggalLahir, kelamin, alamat,jurusan, tlp, email} = validateFields.data
+  const { tamatTahun, tempatLahir, tanggalLahir, kelamin, alamat, jurusan, tlp} = validateFields.data
   try {
-    await prisma.dataUser.create({
+    await prisma.user.create({
       data: {
-        name, 
         tamatTahun,
         tempatLahir,
         tanggalLahir,
         alamat,
         kelamin,
         jurusan,
-        tlp,
-        email,
-        userId: validateFields.data.user
+        tlp
       }
     })
   } catch (err) {

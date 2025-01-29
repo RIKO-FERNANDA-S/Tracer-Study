@@ -10,6 +10,9 @@ import {
 } from "@tanstack/react-table";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
 
 
 export type User = {
@@ -20,9 +23,14 @@ export type User = {
 
 export const columns: ColumnDef<User>[] = [
   {
+    accessorKey: "id",
+    header: "Nomor",
+    cell: ({row}) => <span className="justify-center flex w-10">{row.index + 1}</span>
+  },
+  {
     accessorKey: "name",
     header: "Name",
-    cell: ({ row }) => <span>{row.getValue("name")}</span>,
+    cell: ({ row }) => <span className="capitalize">{row.getValue("name")}</span>,
   },
   {
     accessorKey: "email",
@@ -30,9 +38,14 @@ export const columns: ColumnDef<User>[] = [
     cell: ({ row }) => <span className="lowercase">{row.getValue("email")}</span>,
   },
   {
-    accessorKey: "alamat",
-    header: "Alamat",
-    cell: ({row}) => <span>{row.getValue("alamat")}</span>,
+    accessorKey: "tamatTahun",
+    header: "Tahun Lulus",
+    cell: ({row}) => <span>{row.getValue("tamatTahun")}</span>,
+  },
+  {
+    accessorKey: "kelamin",
+    header: "Kelamin",
+    cell: ({row}) => <span>{row.getValue("kelamin") ? "Laki-laki" : "Perempuan"}</span>,
   },
   {
     id: "actions",
@@ -40,7 +53,7 @@ export const columns: ColumnDef<User>[] = [
     cell: ({ row }) => {
       const user = row.original;
       return (
-        <Button variant="ghost" onClick={() => console.log(`Edit user ${user.id}`)}>
+        <Button variant="ghost" onClick={() => alert(`Edit user ${user.name}`)}>
           Edit
         </Button>
       );
@@ -48,13 +61,17 @@ export const columns: ColumnDef<User>[] = [
   },
 ];
 
+
+
 export default function DataTable() {
   const [users, setUsers] = useState<User[]>([]);
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
+    setLoading(false)
     const fetchUsers = async () => {
       try {
-        const res = await fetch("/api/data/user");
+        const res = await fetch("/api/data");
         const data = await res.json();
         
         setUsers(data);
@@ -62,7 +79,7 @@ export default function DataTable() {
         console.error("Failed to fetch users:", error);
       }
     };
-
+    
     fetchUsers();
   }, []);
 
@@ -76,6 +93,7 @@ export default function DataTable() {
     <div className="w-full">
       <Table>
         <TableHeader>
+
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
@@ -88,15 +106,15 @@ export default function DataTable() {
             </TableRow>
           ))}
         </TableHeader>
+
         <TableBody>
-          {table.getRowModel().rows.length === 0 ? (
+          {isLoading  ? (
             
               <TableRow>
                   <TableCell colSpan={table.getHeaderGroups()[0]?.headers.length || 1} className="text-center">
-                    <p>tabel belum ada data siswa</p>
+                    <Skeleton/>
                   </TableCell>
               </TableRow>
-          
           ) : (
             table.getRowModel().rows.map((row) => (
               <TableRow key={row.id}>
@@ -109,6 +127,7 @@ export default function DataTable() {
             ))
           )}
         </TableBody>
+
       </Table>
     </div>
   );

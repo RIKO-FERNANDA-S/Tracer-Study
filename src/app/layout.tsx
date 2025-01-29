@@ -1,7 +1,7 @@
 "use client"
 import { SessionProvider } from "next-auth/react";
 import "./globals.css";
-import Navbar from "@/components/layouts/navbarHome";
+import Navbar from "@/components/layouts/navbar/navbarHome";
 import { usePathname } from "next/navigation";
 
 

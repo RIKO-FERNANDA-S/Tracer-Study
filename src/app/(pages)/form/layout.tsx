@@ -5,5 +5,5 @@ export default function Layout({
   children: React.ReactNode;
   kuliah: React.ReactNode;
 }) {
-  return <main className="">{children}</main>;
+  return <main className="h-max">{children}</main>;
 }

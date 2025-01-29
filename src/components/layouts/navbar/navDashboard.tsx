@@ -1,5 +1,5 @@
 import React from "react";
-import Date from "../fragments/date";
+import Date from "../../fragments/date";
 
 async function navDashboard() {
 

@@ -4,8 +4,8 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo1 from "../../../public/imgLogo/icon.png";
-import Logo from "../../../public/imgLogo/mawalogox-1536x300.png";
+import Logo1 from "../../../../public/imgLogo/icon.png";
+import Logo from "../../../../public/imgLogo/mawalogox-1536x300.png";
 
 const Navbar = () => {
   const { data: session } = useSession();

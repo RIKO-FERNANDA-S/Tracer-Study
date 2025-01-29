@@ -1,6 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
-  binaryTargets = "native"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native"]
 }
 
 datasource db {
@@ -45,10 +45,18 @@ model User {
   image         String?
   password      String?
   role          String               @default("user")
+  address       String?
+  createdAt     DateTime             @default(now())
+  major       String?
+  gender       String?
+  tahunLulus    Int?
+  dateOfBirth  Int?
+  placeOfBirth   String?
+  noTelphone    Int?
+  updatedAt     DateTime             @updatedAt
   bekerja       AlumniBekerja[]
   wirausaha     AlumniBerwirausaha[]
   kuliah        AlumniKuliah[]
-  dataUser      DataUser[]
   accounts      Account[]
   sessions      Session[]
 
@@ -62,33 +70,6 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map("verification_tokens")
-}
-
-// model Jurusan {
-//   id       String   @id @default(cuid())
-//   name     String   
-//   slug     String   @unique
-//   users    DataUser[]
-// }
-
-
-model DataUser {
-  id           String   @id @default(cuid())
-  name         String?
-  tempatLahir  String?
-  tanggalLahir Int?
-  kelamin      Boolean?
-  tamatTahun   Int?
-  jurusan      String?
-  alamat       String?
-  tlp          Int?
-  email        String?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  userId       String
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  // jurusanId    String
-  // dataJurusan  Jurusan @relation(fields: [jurusanId], references: [id], onDelete: Cascade)
 }
 
 model AlumniBekerja {

@@ -11,10 +11,10 @@ export type User = {
 export default function Mawa1() {
 
   return (
-    <main className="p-7 h-max ">
+    <main className="">
       <section>
         <div className="w-full">
-          <DataTable/>
+          <DataTable />
         </div>
       </section>
     </main>

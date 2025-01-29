@@ -14,7 +14,7 @@ function Date() {
         return () => clearInterval(interval)
     }, [])
   return (
-    <p>{time.format('dddd MM YYYY')}</p>
+    <p>{time.format('dddd, D-MM-YYYY')}</p>
   )
 }
 

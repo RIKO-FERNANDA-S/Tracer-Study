@@ -46,6 +46,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   callbacks: {
     authorized({auth, request: {nextUrl}}){
       const isLoggedIn  = !!auth?.user;
+      const role = auth?.user.role
       const ProtectedRoutes = ["/dashboard", "/user", "/form" ];
 
       
@@ -54,11 +55,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
 
       if(isLoggedIn && nextUrl.pathname.startsWith("/login")){
-        return Response.redirect(new URL("/dashboard", nextUrl));
+        if(role === "admin"){
+          return Response.redirect(new URL("/dashboard", nextUrl));
+        }
+        
+        if(role === "user"){
+          return Response.redirect(new URL("/", nextUrl));
+        }
       }
-
       return true
     },
+
     jwt({token, user}){
       if(user) token.role = user.role;
       return token;
