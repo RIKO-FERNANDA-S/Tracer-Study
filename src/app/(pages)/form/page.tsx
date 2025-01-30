@@ -6,11 +6,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 import { CreateDataSchema} from "@/lib/zod";
-import { SubmitHandler, useForm } from "react-hook-form";
+import {  useForm } from "react-hook-form";
 
 import Image from "next/image";
 import Logo from "../../../../public/imgLogo/icon.png";
 import { Button } from "@/components/ui/button";
+import { redirect } from "next/navigation";
 
 
 type FormValues = {
@@ -27,27 +28,26 @@ jurusan: string
 
 function FormData() {
 
-  const onSubmit = async (values: z.infer<typeof CreateDataSchema>) => {
-    console.log(values)
-    try {
-      const response = await fetch("/api/data/dataSiswa", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
-
-
-      const data = await response.json();
-      console.log(data)
-      return data
-      
-      
-    } catch (error) {
-      console.log(error)
-    }
-  };
+const onSubmitForm = async (values: z.infer<typeof CreateDataSchema>) => {
+     console.log(values)
+     try {
+       const response = await fetch(`api/data/dataSiswa`, {
+         method: "PUT",
+         headers: {
+           "Content-Type": "application/json",
+         },
+         body: JSON.stringify(values),
+       });
+       
+       if (!response.ok) {
+         throw new Error("masalah bro")
+        }
+        
+      } catch (error) {
+        console.log(error)
+      }
+      redirect("/dashboardUser")
+   };
 
 
   const form = useForm<z.infer<typeof CreateDataSchema>>({
@@ -58,8 +58,8 @@ function FormData() {
       major: "",
       gender: "",
       address: "",
-      noTelphone: 0,
-      tahunLulus: 0
+      noTelphone: "",
+      tahunLulus: 0,
     },
   });
 
@@ -70,7 +70,7 @@ function FormData() {
         <Form {...form}>
           <div className="w-full h-max flex justify-center">
             <form
-              onSubmit={form.handleSubmit(onSubmit)}
+              onSubmit={form.handleSubmit(onSubmitForm)}
               className="space-y-5 w-3/4 flex flex-col items-center"
             >
               <nav className="flex w-full rounded-[.5rem] px-10 justify-start gap-7 bg-blue-400 items-center h-max py-8">
@@ -114,6 +114,7 @@ function FormData() {
                       <FormDescription>
                         isi tanggal lahir kamu contoh= (tgl/bln/thn).
                       </FormDescription>
+                      <FormMessage/>
                     </FormItem>
                   )}
                 />
@@ -132,6 +133,7 @@ function FormData() {
                       <FormDescription>
                         Alamat tempat tinggal mu.
                       </FormDescription>
+                      <FormMessage/>
                     </FormItem>
                   )}
                 />
@@ -145,9 +147,10 @@ function FormData() {
                     <FormItem>
                       <FormLabel>Telphone</FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input placeholder="" type="number" inputMode="numeric" step={1} {...field}  />
                       </FormControl>
-                      <FormDescription>isi dengan 12 angka</FormDescription>
+                      <FormDescription>Isi Dengan 12 Angka</FormDescription>
+                      <FormMessage/>
                     </FormItem>
                   )}
                 />
@@ -183,11 +186,12 @@ function FormData() {
                   name="tahunLulus"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>tamatTahun</FormLabel>
+                      <FormLabel>Tahun Lulus</FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input placeholder="e.g. 2025" type="number" {...field} />
                       </FormControl>
-                      <FormDescription>Isi nama tamatTahun anda</FormDescription>
+                      <FormDescription>Isi Tahun Lulus Anda</FormDescription>
+                      <FormMessage/>
                     </FormItem>
                   )}
                 />

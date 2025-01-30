@@ -6,6 +6,7 @@ import {
   array,
   ZodIssueCode,
   NEVER,
+  coerce,
 } from "zod";
 
 export const SignInSchema = object({
@@ -32,7 +33,7 @@ export const RegisterSchema = object({
 
 
 export const CreateDataSchema = object({
-  placeOfBirth: string().min(3, "Berikan lebih lengkap lagi"),
+  placeOfBirth: string().min(4, "Berikan lebih lengkap lagi"),
   dateOfBirth: string()
     .refine((val) => !isNaN(val as unknown as number))
     .transform((val, ctx) => {
@@ -46,10 +47,10 @@ export const CreateDataSchema = object({
       }
       return parsed;
     }),
-  gender: string(),
+  gender: string().min(4, {message: "Pilih jenis kelamin anda"}),
   tahunLulus: string()
-  .min(4, { message: "nmor kurang bro" })
-  .max(12, { message: "jangan banyak banyak" })
+  .min(3, { message: "Angka tahun yang anda beri kurang" })
+  .max(4, { message: "Terlalu banyak angka" })
   .refine((val) => !isNaN(val as unknown as number))
   .transform((val, ctx) => {
     const parsed = parseInt(val);
@@ -62,19 +63,9 @@ export const CreateDataSchema = object({
     }
     return parsed;
   }),
-  noTelphone: string().min(2, {message: "kurang nomor"}).refine((val) => !isNaN(val as unknown as number)).transform((val, ctx) => {
-    const parsed = parseInt(val);
-    if(isNaN(parsed)){
-      ctx.addIssue({
-        code: ZodIssueCode.custom,
-        message: "bukan ak=ngka"
-      });
-      return NEVER;
-    }
-    return parsed;
-  }),
-  major: string(),
-  address: string().min(7, "Berikan alamat yang lebih lengkap lagi"),
+  noTelphone: string().min(11, {message: "Nomor telpon kurang lengkap"}).max(13, {message: "Terlalu banyak nomor telepon"}),
+  major: string().min(2, {message: "Pilih salah satu jurusan"}),
+  address: string().min(10, "Berikan alamat sesuai dengan contoh"),
 });
 
 export const CreateAlumniKuliahSchema = object({

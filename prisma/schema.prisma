@@ -47,12 +47,12 @@ model User {
   role          String               @default("user")
   address       String?
   createdAt     DateTime             @default(now())
-  major       String?
-  gender       String?
+  major         String?
+  gender        String?
   tahunLulus    Int?
-  dateOfBirth  Int?
-  placeOfBirth   String?
-  noTelphone    Int?
+  dateOfBirth   Int?
+  placeOfBirth  String?
+  noTelphone    String?
   updatedAt     DateTime             @updatedAt
   bekerja       AlumniBekerja[]
   wirausaha     AlumniBerwirausaha[]

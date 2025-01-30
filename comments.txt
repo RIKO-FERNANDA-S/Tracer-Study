@@ -1,0 +1,23 @@
+feat: Menambahkan fitur baru (fitur utama)
+Contoh: feat(auth): Menambahkan fitur login dengan Google
+
+fix: Memperbaiki bug
+Contoh: fix(cart): Memperbaiki total harga yang salah
+
+refactor: Perubahan kode tanpa mengubah fungsionalitas
+Contoh: refactor(auth): Optimasi validasi input form
+
+perf: Meningkatkan performa
+Contoh: perf(api): Kurangi waktu respons API produk
+
+docs: Perubahan pada dokumentasi
+Contoh: docs(README): Tambahkan instruksi setup database
+
+style: Perubahan yang hanya berhubungan dengan format kode (spasi, indentasi, dll.)
+Contoh: style(navbar): Gunakan single quote pada string
+
+test: Menambahkan atau memperbarui pengujian (unit test/integration test)
+Contoh: test(cart): Tambahkan unit test untuk total harga
+
+chore: Perubahan kecil yang tidak mempengaruhi kode aplikasi
+Contoh: chore(deps): Update dependensi Prisma ke versi terbaru

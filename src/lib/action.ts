@@ -5,6 +5,7 @@ import { prisma } from "./prisma";
 import { redirect } from "next/navigation";
 import { signIn, signOut } from "../../auth";
 import { AuthError } from "next-auth";
+import { z } from "zod";
 
 export const signUpCredentials = async (
   prevState: unknown,
@@ -75,67 +76,28 @@ export const signOutCredentials = async () => {
   await signOut();
 };
 
-// export const CreateData = async ( formData: FormData) => {
-//   // const data = Object.fromEntries(formData.entries())
-//   // console.log(data)
-//   const validateFields = CreateDataSchema.safeParse(
-//     Object.fromEntries(formData.entries())
-//   );
 
-//   if (!validateFields.success) {
-//     return {
-//       error: validateFields.error.flatten().fieldErrors,
-//     };
-//   }
-
-//   // const {name,} = validateFields.data
-
-//   try {
-//     await prisma.dataUser.create({
-//       data: {
-//         name: validateFields.data.name,
-//         tempatLahir: validateFields.data.tempatlahir,
-        
+//  export const onSubmitForm = async (values: z.infer<typeof CreateDataSchema>) => {
+//     console.log(values)
+//     try {
+//       const response = await fetch(`${process.env.BASE_URL}/api/data/dataSiswa`, {
+//         method: "PUT",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(values),
+//       });
+      
+//       if (response.ok) {
+//         return response
 //       }
-//     });
-//   } catch (err) {
-//     if (err) {
-//       return { message: "Gagal daftar, user sudah ada" };
+      
+//     } catch (error) {
+//       console.log(error)
 //     }
-//   }
-//   // redirect("/dashboard");
-// };
+//     redirect("/dashboardUser")
+//   };
 
-
-export const createData = async (prevState: any,formData: FormData) => {
-  const validateFields = CreateDataSchema.safeParse(Object.fromEntries(formData.entries()))
-
-  if (!validateFields.success) {
-    return {
-      error: validateFields.error.flatten().fieldErrors,
-    };
-  }
-
-
-  const { tamatTahun, tempatLahir, tanggalLahir, kelamin, alamat, jurusan, tlp} = validateFields.data
-  try {
-    await prisma.user.create({
-      data: {
-        tamatTahun,
-        tempatLahir,
-        tanggalLahir,
-        alamat,
-        kelamin,
-        jurusan,
-        tlp
-      }
-    })
-  } catch (err) {
-    if (err) {
-      return { message: "Gagal daftar, user sudah ada" };
-    }
-  }
-}
 
 export const CreateAlumniKuliah = async (formatData: FormData) => {
   const validateFields = CreateAlumniKuliahSchema.safeParse(Object.fromEntries(formatData.entries()))

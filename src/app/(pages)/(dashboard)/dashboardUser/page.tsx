@@ -9,9 +9,7 @@ async function DashboardUser() {
   const session = await auth();
   if (!session?.user) {
     redirect("/login");
-  }
-
-  if (session?.user.role !== "user") { 
+  }if (session?.user.role !== "user") { 
     redirect("/dashboardUser");
   }
 
