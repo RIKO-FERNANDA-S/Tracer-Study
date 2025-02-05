@@ -19,6 +19,9 @@ export type User = {
   id: string;
   email: string;
   name: string;
+  tahunLulus: number;
+  major: string;
+  gender: string;
 };
 
 export const columns: ColumnDef<User>[] = [
@@ -35,18 +38,14 @@ export const columns: ColumnDef<User>[] = [
   {
     accessorKey: "email",
     header: "Email",
-    cell: ({ row }) => <span className="lowercase">{row.getValue("email")}</span>,
+    cell: ({ row }) => <span className="lowercase italic">{row.getValue("email")}</span>,
   },
   {
-    accessorKey: "tamatTahun",
+    accessorKey: "tahunLulus",
     header: "Tahun Lulus",
-    cell: ({row}) => <span>{row.getValue("tamatTahun")}</span>,
+    cell: ({row}) => <span>{row.getValue("tahunLulus")}</span>,
   },
-  {
-    accessorKey: "kelamin",
-    header: "Kelamin",
-    cell: ({row}) => <span>{row.getValue("kelamin") ? "Laki-laki" : "Perempuan"}</span>,
-  },
+
   {
     id: "actions",
     header: "Actions",
@@ -63,7 +62,10 @@ export const columns: ColumnDef<User>[] = [
 
 
 
-export default function DataTable() {
+export default function DataTable({params}: {params: Promise<{jurusan: string}>}) {
+  
+    const {jurusan} = React.use(params)
+
   const [users, setUsers] = useState<User[]>([]);
   const [isLoading, setLoading] = useState(true)
 
@@ -71,7 +73,7 @@ export default function DataTable() {
     setLoading(false)
     const fetchUsers = async () => {
       try {
-        const res = await fetch("/api/data");
+        const res = await fetch(`/api/data/${jurusan}`);
         const data = await res.json();
         
         setUsers(data);

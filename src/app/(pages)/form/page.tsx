@@ -12,17 +12,7 @@ import Image from "next/image";
 import Logo from "../../../../public/imgLogo/icon.png";
 import { Button } from "@/components/ui/button";
 import { redirect } from "next/navigation";
-
-
-type FormValues = {
-tempatLahir: string,
-tanggalLahir: number,
-alamat: string,
-tamatTahun: number,
-tlp: number,
-kelamin: string,
-jurusan: string
-}
+import Swal from "sweetalert2";
 
 
 
@@ -31,18 +21,16 @@ function FormData() {
 const onSubmitForm = async (values: z.infer<typeof CreateDataSchema>) => {
      console.log(values)
      try {
-       const response = await fetch(`api/data/dataSiswa`, {
+       const response = await fetch('/api/dataSiswa', {
          method: "PUT",
-         headers: {
-           "Content-Type": "application/json",
-         },
+         headers: {"Content-Type": "application/json",},
          body: JSON.stringify(values),
        });
        
        if (!response.ok) {
          throw new Error("masalah bro")
         }
-        
+        Swal.fire({icon: "success", titleText: "Berhasil ditambah"})
       } catch (error) {
         console.log(error)
       }
@@ -71,7 +59,7 @@ const onSubmitForm = async (values: z.infer<typeof CreateDataSchema>) => {
           <div className="w-full h-max flex justify-center">
             <form
               onSubmit={form.handleSubmit(onSubmitForm)}
-              className="space-y-5 w-3/4 flex flex-col items-center"
+              className="space-y-5 w-3/4 flex flex-col items-center "
             >
               <nav className="flex w-full rounded-[.5rem] px-10 justify-start gap-7 bg-blue-400 items-center h-max py-8">
                 <div className="w-full bg-bgAbout1 bg-cover bg-no-repeat">

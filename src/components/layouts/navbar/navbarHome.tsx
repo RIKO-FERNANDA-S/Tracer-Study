@@ -1,7 +1,6 @@
 "use client";
 import { signOutCredentials } from "@/lib/action";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Logo1 from "../../../../public/imgLogo/icon.png";
@@ -11,26 +10,27 @@ const Navbar = () => {
   const { data: session } = useSession();
 
   return (
-    <header className="w-full h-max flex justify-center ">
-      <nav className="w-max hidden md:flex items-center justify-between p-3 bg-[#f7f9ff] mt-5 rounded-lg z-10 fixed shadow-xl px-6 gap-56">
-        <Link href="/" className="">
-          <Image src={Logo} alt="logo" className="w-80"></Image>
+    <main className="w-full h-max flex justify-center">
+      <div className="w-11/12 h-max hidden md:flex items-center justify-between px-6 pt-5">
+        <Link href="/" className="flex h-full items-center">
+          <Image src={Logo1} alt="logo" className="w-20"></Image>
         </Link>
 
-        <div className="flex items-center gap-11 font-poppins">
-          <div className="flex items-center justify-center gap-6 text-base font-normal w-max ">
+          <div className="flex items-center justify-center gap-20 text-xl font-semibold w-max font-Poppins">
             <Link href="#beranda" id="home">
               <h1>Beranda</h1>
             </Link>
             <Link href="#tentang">
               <h1>Tentang</h1>
             </Link>
-            <Link href="#kontak">Kontak</Link>
+            <Link href="#kontak">Jejak Karir</Link>
           </div>
+          
+        <div className="font-poppins">
 
           <div>
             {session ? (
-              <div className="flex dropdown dropdown-bottom">
+              <div className="flex dropdown dropdown-end">
                 <Image
                   src={session.user.iamge || "/imgLogo/user.jpg"}
                   alt="avatar"
@@ -41,7 +41,7 @@ const Navbar = () => {
                   className="rounded-full"
                 />
                 <div
-                  className=" absolute top-20 w-max h-max dropdown-content menu"
+                  className=" absolute z-20 top-20 w-max h-max dropdown-content menu"
                   tabIndex={0}
                 >
                   <div className=" bg-white flex flex-col p-5 shadow-md rounded-md">
@@ -91,21 +91,21 @@ const Navbar = () => {
               <div className="flex gap-4 text-base items-center">
                 <Link
                   href="/login"
-                  className="py-2 px-3 rounded-md outline outline-2 outline-gray-300 text-gray-400 hover:outline-none hover:bg-gray-400 hover:text-white transition-all ease-in-out"
+                  className="py-2 px-5 rounded-[.5rem] outline outline-2 outline-[#FFC107] text-[#FFC107] hover:outline-none hover:bg-kuningMawa1 hover:text-white transition-all ease-in-out"
                 >
-                  Login
+                  Masuk
                 </Link>
                 <Link
                   href="/register"
-                  className="rounded-md bg-gray-300 py-2 px-3 text-white hover:bg-gray-400 transition-all ease-in-out"
+                  className="rounded-[.5rem] bg-kuningMawa1 py-2 px-5 text-white  transition-all ease-in-out"
                 >
-                  Sign Up
+                  Daftar
                 </Link>
               </div>
             )}
           </div>
         </div>
-      </nav>
+      </div>
 
       {/* Navbar Side */}
       <nav className="drawer drawer-end fixed z-10 flex md:hidden p-2 bg-[#f7f9ff] items-center">
@@ -214,7 +214,8 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-    </header>
+
+    </main>
   );
 };
 

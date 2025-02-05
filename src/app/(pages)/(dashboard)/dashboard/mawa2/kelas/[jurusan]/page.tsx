@@ -11,61 +11,97 @@ import {
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import DetailUser from '@/components/fragments/detailUser';
+import Swal from 'sweetalert2';
 
 
 export type User = {
   id: string;
   email: string;
   name: string;
-  tamatTahun: number;
-  kelamin: boolean;
+  tahunLulus: number;
+  gender: string;
 };
 
+const deleteUser = async (id: string) => {
+  const res = await fetch("/api/dataSiswa",{
+    method: "DELETE",
+    headers: {"COntent-Type": "application/json"},
+    body: JSON.stringify({id}),
+  });
+  if(res.ok){
+    Swal.fire("Delete", "Data berhasil dihapus", "success");
+    window.location.reload();
+  }else {
+    Swal.fire("Error", "Data gagal dihapus", "error");
+  }
+}
 
- const columns: ColumnDef<User>[] = [
-    {
-      accessorKey: "id",
-      header: "Nomor",
-      cell: ({row}) => <span className="justify-center flex w-10">{row.index + 1}</span>
+const handleDelete = (id: string) => {
+Swal.fire({
+  title: "Yakin kah bro?",
+  text: "Dtat akan dihapus secara permanen",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "",
+  cancelButtonColor: "",
+  confirmButtonText: "Hapus",
+  cancelButtonText: "Ga jadi"
+}).then((result) => {
+  if(result.isConfirmed){
+    deleteUser(id)
+  }
+})
+}
+
+
+const columns: ColumnDef<User>[] = [
+  {
+    accessorKey: "id",
+    header: "Nomor",
+    cell: ({row}) => <span className="justify-center flex w-10">{row.index + 1}</span>
+  },
+  {
+    accessorKey: "name",
+    header: "Name",
+    cell: ({ row }) => <span className="capitalize">{row.getValue("name")}</span>,
+  },
+  {
+    accessorKey: "email",
+    header: "Email",
+    cell: ({ row }) => <span className="lowercase">{row.getValue("email")}</span>,
+  },
+  {
+    accessorKey: "tahunLulus",
+    header: "Tahun Lulus",
+    cell: ({row}) => <span>{row.getValue("tahunLulus")}</span>,
+  },
+  {
+    accessorKey: "gender",
+    header: "Kelamin",
+    cell: ({row}) => <span>{row.getValue("gender")}</span>,
+  },
+  {
+    accessorKey: "major",
+    header: "Jurusan",
+    cell: ({row}) => <span>{row.getValue("major")}</span>,
+  },
+  {
+    id: "actions", 
+    header: "Actions",
+    cell: ({ row }) => {
+      const user = row.original;
+      return (
+        <div className='flex gap-4 w-full justify-center'>
+
+          <button className='bx bxs-trash bx-sm' onClick={() => handleDelete(user.id)}></button>
+          <DetailUser/>
+          <i className='bx bxs-edit bx-sm'></i>
+        </div>
+      );
     },
-    {
-      accessorKey: "name",
-      header: "Name",
-      cell: ({ row }) => <span className="capitalize">{row.getValue("name")}</span>,
-    },
-    {
-      accessorKey: "email",
-      header: "Email",
-      cell: ({ row }) => <span className="lowercase">{row.getValue("email")}</span>,
-    },
-    {
-      accessorKey: "tamatTahun",
-      header: "Tahun Lulus",
-      cell: ({row}) => <span>{row.getValue("tamatTahun")}</span>,
-    },
-    {
-      accessorKey: "kelamin",
-      header: "Kelamin",
-      cell: ({row}) => <span>{row.getValue("kelamin") ? "Laki-laki" : "Perempuan"}</span>,
-    },
-    {
-      accessorKey: "jurusan",
-      header: "Jurusan",
-      cell: ({row}) => <span>{row.getValue("jurusan")}</span>,
-    },
-    {
-      id: "actions",
-      header: "Actions",
-      cell: ({ row }) => {
-        const user = row.original;
-        return (
-          <Button variant="ghost" onClick={() => alert(`Edit user ${user.name}`)}>
-            Edit
-          </Button>
-        );
-      },
-    },
-  ];
+  },
+];
 
 
 

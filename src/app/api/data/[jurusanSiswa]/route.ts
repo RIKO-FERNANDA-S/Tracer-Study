@@ -17,7 +17,8 @@ export async function GET(req: NextRequest, {params} : {params : {jurusanSiswa: 
     try {
         const users = await prisma.user.findMany({
           where: {
-            jurusan: jurusanSiswa
+            major: jurusanSiswa,
+            role: "user"
           }
         });
         

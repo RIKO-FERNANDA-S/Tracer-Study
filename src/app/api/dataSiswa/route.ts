@@ -1,15 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { auth } from "../../../../../auth";
+import { auth } from "../../../../auth";
 
 export async function PUT(req: NextRequest) {
-  
+  console.log("Received PUT request");
   const session = await auth();
   try {
     const body = await req.json(); // Ambil data dari body request
     const idSiswa = await session?.user.id;
-
-    console.log("Data diterima:", body);
 
     const siswa = await prisma.user.findUnique({
       where: {
@@ -60,5 +58,38 @@ export async function PUT(req: NextRequest) {
       { message: "Terjadi kesalahan", err },
       { status: 500 }
     );
+  }
+}
+
+export async function GET() {
+  const session = await auth();
+
+  if (!session || !session.user?.email) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  try {
+    const user = await prisma.user.findUnique({
+      where: { email: session.user.email }, // Cari user berdasarkan email
+    });
+
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(user);
+  } catch (error) {
+    return NextResponse.json({ error: "Failed to fetch user" }, { status: 500 });
+  }
+}
+
+export async function DELETE(req: Request) {
+  try {
+    const {id} = await req.json();
+    await prisma.user.delete({ where: { id } });
+
+    return new Response(JSON.stringify({success: true}), {status:200})
+  } catch (error) {
+    return new Response(JSON.stringify({success: false, message: error}), {status: 500})
   }
 }

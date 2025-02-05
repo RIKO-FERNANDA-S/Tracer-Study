@@ -14,7 +14,9 @@ export default {
   			foreground: 'var(--foreground)'
   		},
   		backgroundColor: {
-  			button: '#BDC3C7'
+  			button: '#BDC3C7',
+			kuningMawa1: '#FFC107',
+			biruMawa2: '#A5D8E3'
   		},
   		fontFamily: {
   			Poppins: [
@@ -22,9 +24,17 @@ export default {
   				'sans-serif'
   			],
   			Roboto: [
-  				'Roboto"',
+  				'Roboto',
   				'sans-serif'
-  			]
+  			],
+			Monstserrat: [
+				'Monstserrat',
+				'sans-serif'
+			],
+			Lora: [
+				'Lora',
+				'sans-serif'
+			]
   		},
   		backgroundImage: {
   			'bgAbout1': './public/img/T5.jpeg',

@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import {
   ColumnDef,
   flexRender,
@@ -11,15 +12,47 @@ import {
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import DetailUser from '@/components/fragments/detailUser';
 
 
 export type User = {
   id: string;
   email: string;
   name: string;
-  tamatTahun: number;
-  kelamin: boolean;
+  tahunLulus: number;
+  gender: string;
 };
+
+const deleteUser = async (id: string) => {
+    const res = await fetch("/api/dataSiswa",{
+      method: "DELETE",
+      headers: {"COntent-Type": "application/json"},
+      body: JSON.stringify({id}),
+    });
+    if(res.ok){
+      Swal.fire("Delete", "Data berhasil dihapus", "success");
+      window.location.reload();
+    }else {
+      Swal.fire("Error", "Data gagal dihapus", "error");
+    }
+}
+
+const handleDelete = (id: string) => {
+  Swal.fire({
+    title: "Yakin kah bro?",
+    text: "Dtat akan dihapus secara permanen",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "",
+    cancelButtonColor: "",
+    confirmButtonText: "Hapus",
+    cancelButtonText: "Ga jadi"
+  }).then((result) => {
+    if(result.isConfirmed){
+      deleteUser(id)
+    }
+  })
+}
 
 
  const columns: ColumnDef<User>[] = [
@@ -39,29 +72,32 @@ export type User = {
       cell: ({ row }) => <span className="lowercase">{row.getValue("email")}</span>,
     },
     {
-      accessorKey: "tamatTahun",
+      accessorKey: "tahunLulus",
       header: "Tahun Lulus",
-      cell: ({row}) => <span>{row.getValue("tamatTahun")}</span>,
+      cell: ({row}) => <span>{row.getValue("tahunLulus")}</span>,
     },
     {
-      accessorKey: "kelamin",
+      accessorKey: "gender",
       header: "Kelamin",
-      cell: ({row}) => <span>{row.getValue("kelamin") ? "Laki-laki" : "Perempuan"}</span>,
+      cell: ({row}) => <span>{row.getValue("gender")}</span>,
     },
     {
-      accessorKey: "jurusan",
+      accessorKey: "major",
       header: "Jurusan",
-      cell: ({row}) => <span>{row.getValue("jurusan")}</span>,
+      cell: ({row}) => <span>{row.getValue("major")}</span>,
     },
     {
-      id: "actions",
+      id: "actions", 
       header: "Actions",
       cell: ({ row }) => {
         const user = row.original;
         return (
-          <Button variant="ghost" onClick={() => alert(`Edit user ${user.name}`)}>
-            Edit
-          </Button>
+          <div className='flex gap-4 w-full justify-center'>
+
+            <button className='bx bxs-trash bx-sm' onClick={() => handleDelete(user.id)}></button>
+            <DetailUser/>
+            <i className='bx bxs-edit bx-sm'></i>
+          </div>
         );
       },
     },
@@ -100,14 +136,16 @@ export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}
         columns,
         getCoreRowModel: getCoreRowModel(),
       });
+
+
   return (
-    <main>
-      <Table >
+    <main className=''>
+      <Table className=''>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <TableHead key={header.id}>
+                <TableHead key={header.id} className='text-center'>
                   {header.isPlaceholder
                     ? null
                     : flexRender(header.column.columnDef.header, header.getContext())}
@@ -121,15 +159,15 @@ export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}
             
               <TableRow>
                   <TableCell colSpan={table.getHeaderGroups()[0]?.headers.length || 1} className="text-center">
-                    <p>tabel belum ada data siswa</p>
+                    <p>tabel belum ada data </p>
                   </TableCell>
               </TableRow>
           
           ) : (
             table.getRowModel().rows.map((row) => (
-              <TableRow key={row.id}>
+              <TableRow key={row.id} className=''>
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
+                  <TableCell key={cell.id} className='text-center'>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
