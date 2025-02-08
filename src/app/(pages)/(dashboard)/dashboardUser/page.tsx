@@ -41,7 +41,7 @@ function DashboardUser() {
       fetchUser();
     }, []);
 
-if (isLoading) return <main className="h-screen">Loading...</main>;
+if (isLoading) return <main className="h-screen"><span className="loading loading-dots loading-md"></span></main>;
 
   return (
     <div className="w-full h-max font-Roboto">

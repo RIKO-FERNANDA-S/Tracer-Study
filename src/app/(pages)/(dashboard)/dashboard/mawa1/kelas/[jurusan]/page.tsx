@@ -110,6 +110,7 @@ export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}
 
   const {jurusan} = React.use(params)
   const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
     
       useEffect(() => {
         const fetchUsers = async () => {
@@ -125,6 +126,9 @@ export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}
           } catch (error) {
             console.error("Failed to fetch users:", error);
             setUsers([])
+          }finally{
+            setLoading(false)
+            if (loading) return <main className="h-screen"><span className="loading loading-dots loading-md"></span></main>;
           }
         };
     
@@ -137,7 +141,7 @@ export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}
         getCoreRowModel: getCoreRowModel(),
       });
 
-
+     
   return (
     <main className=''>
       <Table className=''>

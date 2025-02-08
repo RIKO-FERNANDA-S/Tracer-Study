@@ -4,21 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../../../public/imgLogo/mawalogox-1536x300.png";
 import { usePathname } from "next/navigation";
-import Pp from "../../../../public/imgLogo/user.jpg";
-import { signOutCredentials } from "@/lib/action";
-import { useSession } from "next-auth/react";
+
 
 function Navside() {
   const pathnmae = usePathname();
-  const {data: session} = useSession()
+
 
   return (
-    <main className="h-screen flex flex-col py-5 sticky w-1/5 bg-gray-50 text-black border-r-2 border-black overflow-scroll scrollbar-none justify-between">
+    <main className="h-screen flex flex-col py-5 sticky w-1/5 bg-gray-50 text-black border-r-2 border-black overflow-scroll scrollbar-none ">
       <Link href="/" className="w-full flex justify-center ">
         <Image src={Logo} alt="logo" className="h-auto w-64"></Image>
       </Link>
 
-      <div className="flex flex-col px-5 gap-5">
+      <div className="flex flex-col px-5 gap-5 mt-24">
         <Link href="/dashboard" className=" cursor-pointer">
           <div
             className={`py-2 px-3 flex items-center ${
@@ -106,25 +104,7 @@ function Navside() {
         </Link>
       </div>
 
-      <div className="w-full h-max px-5 mt-5">
-        <div className="w-full flex flex-col gap-8">
-          <div onClick={signOutCredentials} className="w-full h-max cursor-pointer flex gap-5 items-center">
-          <i className='bx bx-log-out bx-sm'></i>
-          <h1 className="text-xl">Logout</h1>
-          </div>
-          
-          <div>
-            <div className="flex gap-3 items-center">
-              <Image src={Pp} alt="profil" className="w-12 rounded-full"></Image>
-              <div className="">
-                <h1 className="text-md font-medium capitalize">{session?.user.name}</h1>
-                <h1 className="text-sm font-light lowercase text-wrap">{session?.user.email}</h1>
-              </div>
-            </div>
-          <h1></h1>
-          </div>
-        </div>
-      </div>
+    
     </main>
   );
 }

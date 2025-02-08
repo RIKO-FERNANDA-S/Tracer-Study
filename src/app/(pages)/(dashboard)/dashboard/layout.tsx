@@ -7,7 +7,7 @@ export default function Layout({
     return (
       <main className="flex bg-gray-50">
         <NavSide/>
-        <div className="w-full overflow-y-scroll h-screen">
+        <div className="w-full h-screen">
         {children}
         </div>
       </main>

@@ -20,10 +20,15 @@ const Navbar = () => {
             <Link href="#beranda" id="home">
               <h1>Beranda</h1>
             </Link>
+            <Link href="#jejakKarir">
+            <h1>Jejak Karir</h1>
+            </Link>
             <Link href="#tentang">
               <h1>Tentang</h1>
             </Link>
-            <Link href="#kontak">Jejak Karir</Link>
+            <Link href="#kontak">
+            <h1>Kontak</h1>
+            </Link>
           </div>
           
         <div className="font-poppins">
@@ -44,7 +49,7 @@ const Navbar = () => {
                   className=" absolute z-20 top-20 w-max h-max dropdown-content menu"
                   tabIndex={0}
                 >
-                  <div className=" bg-white flex flex-col p-5 shadow-md rounded-md">
+                  <div className=" bg-white flex flex-col p-5 shadow-md rounded-md w-48">
                     <p>Hello {session?.user.name}</p>
                     <p className="text-xs">{session?.user.email}</p>
                     <div className="mt-6 w-full">

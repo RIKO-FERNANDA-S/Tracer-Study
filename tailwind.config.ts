@@ -16,7 +16,8 @@ export default {
   		backgroundColor: {
   			button: '#BDC3C7',
 			kuningMawa1: '#FFC107',
-			biruMawa2: '#A5D8E3'
+			biruMawa2: '#A5D8E3',
+			biruSMKPK: "#2A70B6"
   		},
   		fontFamily: {
   			Poppins: [

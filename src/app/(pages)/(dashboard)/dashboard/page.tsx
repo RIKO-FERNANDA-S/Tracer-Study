@@ -32,7 +32,7 @@ async function Dashboard() {
           <div className="w-full h-full ">
             <section className="h-max w-full flex justify-between items-center  px-10 pb-3">
               <h1 className="text-xl">Data Alumni</h1>
-              <div className=" dropdown w-max cursor-pointer pr-7">
+              <div className=" dropdown w-max cursor-pointer pr-7 z-0">
                 <div role="button" tabIndex={0} className="flex items-center gap-2 w-max">
                 <i className='bx bx-calendar bx-sm'></i>
                   <h2 className="text-lg">Tahun 2025</h2>

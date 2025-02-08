@@ -37,6 +37,13 @@ model Session {
   @@map("sessions")
 }
 
+// model TahunRecap {
+//   id           String   @id @default(cuid())
+//   tahun        String?
+//   jurusan      String?
+//   users   User[]
+// }
+
 model User {
   id            String               @id @default(cuid())
   name          String?
@@ -49,10 +56,12 @@ model User {
   createdAt     DateTime             @default(now())
   major         String?
   gender        String?
-  tahunLulus    Int?
   dateOfBirth   Int?
   placeOfBirth  String?
   noTelphone    String?
+  tahunLulus    Int?
+  // tahunId       String
+  // tahunRecap    TahunRecap           @relation(fields: [tahunId], references: [id], onDelete: Cascade)
   updatedAt     DateTime             @updatedAt
   bekerja       AlumniBekerja[]
   wirausaha     AlumniBerwirausaha[]

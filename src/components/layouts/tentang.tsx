@@ -7,7 +7,7 @@ function Tentang() {
   return (
     <main
       id="tentang"
-      className="h-screen flex flex-wrap justify-center items-center w-full"
+      className="h-screen flex flex-wrap justify-center items-center w-full bg-biruMawa2"
     >
       <section className="w-full md:w-1/2 flex flex-col items-center gap-3">
         <div className=" w-full flex justify-center gap-3">

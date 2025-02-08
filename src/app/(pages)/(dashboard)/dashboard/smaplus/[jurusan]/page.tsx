@@ -9,9 +9,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import NavbarDashTable from '@/components/layouts/navbar/navbarDashTable';
 import DetailUser from '@/components/fragments/detailUser';
 import Swal from 'sweetalert2';
 
