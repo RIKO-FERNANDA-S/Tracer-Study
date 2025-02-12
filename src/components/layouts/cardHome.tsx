@@ -13,9 +13,9 @@ function CardHome() {
         </section>
         <section className='w-full h-72 mt-20 gap-7 flex flex-wrap justify-center items-center'>
             <div className='flex items-end h-[80%]'>
-                <div className='bg-gray-200 w-[29rem] h-56 relative rounded-xl'></div>
-                <div className='flex absolute items-end pl-1'>
-                <Image src={Foto1} width={200} alt="Foto"></Image>
+                <div className='bg-gray-200 w-56 md:w-[29rem] h-56 relative rounded-xl'></div>
+                <div className='flex flex-wrap absolute items-end pl-1'>
+                <Image src={Foto1} className='w-56' alt="Foto"></Image>
                 <div className='flex flex-col justify-center gap-4 mb-6 ml-4 h-full'>
                     <h1 className='text-xl font-semibold font-Poppins'>Riko Fernanda S.</h1>
                     <p className='w-64 font-light font-Lora'>"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo, aliquam alias?"</p>
@@ -26,7 +26,7 @@ function CardHome() {
             <div className='flex items-end h-[80%]'>
                 <div className='bg-gray-200 w-[29rem] h-56 relative rounded-xl'></div>
                 <div className='flex absolute items-end pl-1'>
-                <Image src={Foto2} width={200} alt="Foto" ></Image>
+                <Image src={Foto2} className='w-56' alt="Foto" ></Image>
                 <div className='flex flex-col justify-center gap-4 mb-6 ml-4 h-full'>
                     <h1 className='text-xl font-semibold font-Poppins'>M. Novan Ardiansyah</h1>
                     <p className='w-64 font-light font-Lora'>"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo, aliquam alias?"</p>

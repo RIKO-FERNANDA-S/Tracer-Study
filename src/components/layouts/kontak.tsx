@@ -57,7 +57,7 @@ function Kontak() {
           <form className="bg-slate-400 h-full p-10">
 
             <div className="flex flex-col gap-5 mt-6">
-              <div className="flex justify-between gap-5">
+              <div className="flex flex-wrap justify-between gap-5">
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="name" className="text-lg">
@@ -90,7 +90,7 @@ function Kontak() {
 
               <div className="flex flex-col gap-2 ">
                 <label htmlFor="tittle" className="text-lg">
-                  Title
+                 Nomor Telpon
                 </label>
                 <input
                   type="text"

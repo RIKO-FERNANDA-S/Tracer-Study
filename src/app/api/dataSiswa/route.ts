@@ -69,8 +69,9 @@ export async function GET() {
   }
 
   try {
-    const user = await prisma.user.findUnique({
-      where: { email: session.user.email }, // Cari user berdasarkan email
+    const user = await prisma.user.findMany({
+      where: { id: session?.user.id}, 
+      include: {alumniKuliah : true, alumniBekerja: true, alumniWirausaha: true}
     });
 
     if (!user) {

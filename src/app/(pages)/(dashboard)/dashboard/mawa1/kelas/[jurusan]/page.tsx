@@ -10,8 +10,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import DetailUser from '@/components/fragments/detailUser';
 
 
@@ -110,11 +108,12 @@ export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}
 
   const {jurusan} = React.use(params)
   const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
     
       useEffect(() => {
         const fetchUsers = async () => {
           try {
+            setLoading(true)
               const res = await fetch(`/api/data/${jurusan}`);
               if (!res.ok) {
                 console.error();
@@ -128,7 +127,7 @@ export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}
             setUsers([])
           }finally{
             setLoading(false)
-            if (loading) return <main className="h-screen"><span className="loading loading-dots loading-md"></span></main>;
+            
           }
         };
     
@@ -143,7 +142,7 @@ export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}
 
      
   return (
-    <main className=''>
+    <main >
       <Table className=''>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -163,7 +162,9 @@ export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}
             
               <TableRow>
                   <TableCell colSpan={table.getHeaderGroups()[0]?.headers.length || 1} className="text-center">
-                    <p>tabel belum ada data </p>
+                    {loading == true ? <span className="loading loading-dots loading-md"></span> : "Data Siswa Tidak Ada"}
+                 
+                    
                   </TableCell>
               </TableRow>
           

@@ -31,7 +31,7 @@ export default function RootLayout({
         <SessionProvider>
           
         {!isDisabledNavbar && <Navbar/>}
-          <main>{children}</main>
+          <main className="font-Poppins">{children}</main>
         </SessionProvider>
       </body>
     </html>

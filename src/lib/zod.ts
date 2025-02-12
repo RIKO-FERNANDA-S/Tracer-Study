@@ -69,7 +69,47 @@ export const CreateDataSchema = object({
 });
 
 export const CreateAlumniKuliahSchema = object({
-  kuliah: string().min(2, "Berikan lebih jelas lagi"),
+  namaKuliah: string().min(2, "Berikan lebih jelas lagi"),
   alamat: string().min(7, "Berikan alamat yang lebih lengkap lagi"),
-  user: string(),
 });
+
+export const CreatealumniBekerjaSchema = object({
+  tempatKerja: string().min(5 , "Berikan tempat kerja yang lebih lengkap"),
+  alamat: string().min(7, "Berikan alamat yang lebih lengkap lagi"),
+  jabatan: string().min(4, "Berikan jabatan yang lebih jelas lagi"),
+  statusPekerjaan: boolean(),
+  penghasilan: string()
+  .min(3, { message: "Angka tahun yang anda beri kurang" })
+  .max(4, { message: "Terlalu banyak angka" })
+  .refine((val) => !isNaN(val as unknown as number))
+  .transform((val, ctx) => {
+    const parsed = parseInt(val);
+    if (isNaN(parsed)) {
+      ctx.addIssue({
+        code: ZodIssueCode.custom,
+        message: "Bukan angka",
+      });
+      return NEVER;
+    }
+    return parsed;
+  })
+})
+
+export const CreateAlumniWirausahaSchema = object({
+  namaUsaha: string().min(3, "berikan lebih jelas lagi"),
+  penghasilan: string()
+  .min(3, { message: "Angka tahun yang anda beri kurang" })
+  .max(4, { message: "Terlalu banyak angka" })
+  .refine((val) => !isNaN(val as unknown as number))
+  .transform((val, ctx) => {
+    const parsed = parseInt(val);
+    if (isNaN(parsed)) {
+      ctx.addIssue({
+        code: ZodIssueCode.custom,
+        message: "Bukan angka",
+      });
+      return NEVER;
+    }
+    return parsed;
+  })
+})

@@ -14,6 +14,12 @@ import IconSyringe from "../../../../../public/img/icons/syringe.png";
 import IconHandCoin from "../../../../../public/img/icons/hand-coin.png";
 import IconPenAndRuler from "../../../../../public/img/icons/pencil-ruler.png";
 import IconBuilding from "../../../../../public/img/icons/building.png";
+import dynamic from "next/dynamic";
+
+const CountSMK1 = dynamic(() => import("@/components/fragments/totalSMK1"))
+const CountSMK2 = dynamic(() => import("@/components/fragments/totalSMK2"))
+const CountSMA = dynamic(() => import("@/components/fragments/totalSMA"))
+
 
 async function Dashboard() {
   const session = await auth();
@@ -23,6 +29,8 @@ async function Dashboard() {
   if (session?.user.role !== "admin") {
     redirect("/dashboardUser");
   }
+
+
 
   return (
     <main className="w-full h-screen ">
@@ -59,16 +67,16 @@ async function Dashboard() {
                   </div>
                   <div className="flex flex-col justify-center gap-1 w-full">
                     <Link
-                      href="/dashboard/mawa1"
+                      href="/dashboard/mawa1/kelas/tkjt"
                       className="flex justify-between items-center w-full"
                     >
                       <h1 className="text-lg">SMK MAWA 1</h1>
                       <i className="bx bx-chevron-right bx-sm"></i>
                     </Link>
                     <div>
-                      <h1 className="text-4xl">
-                        2000<span className="text-lg">/siswa</span>
-                      </h1>
+                      <div className="text-3xl flex items-center gap-3">
+                       <CountSMK1/><span className="text-lg">/siswa</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -78,16 +86,16 @@ async function Dashboard() {
                   </div>
                   <div className="flex flex-col justify-center gap-1 w-full">
                     <Link
-                      href="/dashboard/mawa2"
+                      href="/dashboard/mawa2/kelas/akl"
                       className="flex justify-between items-center w-full"
                     >
                       <h1 className="text-lg">SMK MAWA 2</h1>
                       <i className="bx bx-chevron-right bx-sm"></i>
                     </Link>
                     <div>
-                      <h1 className="text-4xl">
-                        2000<span className="text-lg">/siswa</span>
-                      </h1>
+                      <div className="text-3xl flex items-center gap-3">
+                        <CountSMK2/><span className="text-lg">/siswa</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -97,16 +105,16 @@ async function Dashboard() {
                   </div>
                   <div className="flex flex-col justify-center gap-1 w-full">
                     <Link
-                      href="/dashboard/smaplus"
+                      href="/dashboard/smaplus/sma"
                       className="flex justify-between items-center w-full"
                     >
                       <h1 className="text-lg">SMA PLUS</h1>
                       <i className="bx bx-chevron-right bx-sm"></i>
                     </Link>
                     <div>
-                      <h1 className="text-4xl">
-                        2000<span className="text-lg">/siswa</span>
-                      </h1>
+                      <div className="text-3xl flex items-end gap-3">
+                        <CountSMA/><span className="text-lg">/siswa</span>
+                      </div>
                     </div>
                   </div>
                 </div>

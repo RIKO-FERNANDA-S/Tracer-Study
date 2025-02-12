@@ -63,9 +63,9 @@ model User {
   // tahunId       String
   // tahunRecap    TahunRecap           @relation(fields: [tahunId], references: [id], onDelete: Cascade)
   updatedAt     DateTime             @updatedAt
-  bekerja       AlumniBekerja[]
-  wirausaha     AlumniBerwirausaha[]
-  kuliah        AlumniKuliah[]
+  alumniBekerja       AlumniBekerja[]
+  alumniWirausaha     AlumniBerwirausaha[]
+  alumniKuliah        AlumniKuliah[]
   accounts      Account[]
   sessions      Session[]
 
@@ -96,7 +96,7 @@ model AlumniBekerja {
 
 model AlumniBerwirausaha {
   id          String   @id @default(cuid())
-  usaha       String
+  namaUsaha       String
   penghasilan Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -106,7 +106,7 @@ model AlumniBerwirausaha {
 
 model AlumniKuliah {
   id        String   @id @default(cuid())
-  kuliah    String
+  namaKuliah    String
   alamat    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

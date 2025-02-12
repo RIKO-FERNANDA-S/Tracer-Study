@@ -35,7 +35,7 @@ const Navbar = () => {
 
           <div>
             {session ? (
-              <div className="flex dropdown dropdown-end">
+              <div className="flex dropdown dropdown-end z-10">
                 <Image
                   src={session.user.iamge || "/imgLogo/user.jpg"}
                   alt="avatar"
@@ -113,7 +113,7 @@ const Navbar = () => {
       </div>
 
       {/* Navbar Side */}
-      <nav className="drawer drawer-end fixed z-10 flex md:hidden p-2 bg-[#f7f9ff] items-center">
+      <nav className="drawer drawer-end z-20 flex md:hidden p-2 bg-[#f7f9ff] items-center w-full">
         {/* Toggle Open */}
         <input type="checkbox" id="my-drawer-open" className=" drawer-toggle" />
         <div className="drawer-content flex w-full justify-between p-3">
@@ -125,7 +125,7 @@ const Navbar = () => {
           </label>
         </div>
 
-        <div className="drawer-side">
+        <div className="drawer-side h-full">
           <div className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
             <input
               type="checkbox"

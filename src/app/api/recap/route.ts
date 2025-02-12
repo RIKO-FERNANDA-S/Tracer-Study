@@ -34,7 +34,7 @@ export async function POST(req: Request) {
   try {
     const users = await prisma.user.findMany({
       where: { tahunLulus: tahun },
-      select: { name: true, email: true, tahunLulus: true,  },
+      select: { name: true, email: true, tahunLulus: true, alumniBekerja: true },
     });
 
     if (users.length === 0) {

@@ -11,7 +11,10 @@ export default {
   	extend: {
   		colors: {
   			background: 'var(--background)',
-  			foreground: 'var(--foreground)'
+  			foreground: 'var(--foreground)',
+			kuningMawa1: '#FFC107',
+			biruMawa2: '#A5D8E3',
+			biruSMKPK: "#2A70B6",
   		},
   		backgroundColor: {
   			button: '#BDC3C7',
@@ -19,6 +22,7 @@ export default {
 			biruMawa2: '#A5D8E3',
 			biruSMKPK: "#2A70B6"
   		},
+		
   		fontFamily: {
   			Poppins: [
   				'Poppins',
@@ -39,7 +43,8 @@ export default {
   		},
   		backgroundImage: {
   			'bgAbout1': './public/img/T5.jpeg',
-  			'bgAbout2': './public/img/T7.jpeg'
+  			'bgAbout2': './public/img/T7.jpeg',
+			bgForm : "./public/img/img-form.jpg"
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

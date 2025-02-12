@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import YearDate from "@/components/fragments/yearDate";
 import Logo from "../../../../public/imgLogo/mawalogox-1536x300.png";
 import { usePathname } from "next/navigation";
 
@@ -16,7 +17,7 @@ function Navside() {
         <Image src={Logo} alt="logo" className="h-auto w-64"></Image>
       </Link>
 
-      <div className="flex flex-col px-5 gap-5 mt-24">
+      <div className="flex flex-col px-5 gap-5 mt-24 h-max">
         <Link href="/dashboard" className=" cursor-pointer">
           <div
             className={`py-2 px-3 flex items-center ${
@@ -93,6 +94,7 @@ function Navside() {
             </div>
           </div>
         </div>
+        
         <Link
           href="/dashboard/recap"
           className={`flex items-center cursor-pointer py-2 px-3 ${
@@ -103,6 +105,10 @@ function Navside() {
           <h1 className="text-lg ml-2 font-medium">Recap</h1>
         </Link>
       </div>
+{/* 
+      <div className="flex">
+        <h1 className="flex justify-start gap-3 mt-7">© 2025 Riko. Hak cipta dilindungi.</h1>
+      </div> */}
 
     
     </main>

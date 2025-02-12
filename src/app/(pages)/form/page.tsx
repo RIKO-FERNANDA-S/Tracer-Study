@@ -8,12 +8,11 @@ import { z } from "zod";
 import { CreateDataSchema} from "@/lib/zod";
 import {  useForm } from "react-hook-form";
 
-import Image from "next/image";
-import Logo from "../../../../public/imgLogo/icon.png";
+
 import { Button } from "@/components/ui/button";
 import { redirect } from "next/navigation";
 import Swal from "sweetalert2";
-import { useSession } from "next-auth/react";
+
 
 
 
@@ -53,6 +52,8 @@ const onSubmitForm = async (values: z.infer<typeof CreateDataSchema>) => {
   });
 
 
+
+
   return (
     <main className="w-full h-max ">
       <section className="w-full h-max flex py-4 pb-10">
@@ -62,16 +63,7 @@ const onSubmitForm = async (values: z.infer<typeof CreateDataSchema>) => {
               onSubmit={form.handleSubmit(onSubmitForm)}
               className="space-y-5 w-3/4 flex flex-col items-center "
             >
-              <nav className="flex w-full rounded-[.5rem] px-10 justify-start gap-7 bg-blue-400 items-center h-max py-8">
-                <div className="w-full bg-bgAbout1 bg-cover bg-no-repeat">
-                  <Image src={Logo} className="w-24" alt="logo"></Image>
-                  <span>
-                    <h1 className="block text-gray-700 text-3xl font-semibold mb-2">
-                      Formulir Survey Data Pribadi
-                    </h1>
-                  </span>
-                </div>
-              </nav>
+ 
 
               <div className="w-full bg-white p-5 rounded-xl shadow-md">
                 <FormField
@@ -81,7 +73,7 @@ const onSubmitForm = async (values: z.infer<typeof CreateDataSchema>) => {
                     <FormItem>
                       <FormLabel>Tempat Lahir anda</FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input placeholder="Bojonegoro" {...field} />
                       </FormControl>
                       <FormDescription>Isi Tempat lahir anda.</FormDescription>
                       <FormMessage />
@@ -98,10 +90,10 @@ const onSubmitForm = async (values: z.infer<typeof CreateDataSchema>) => {
                     <FormItem>
                       <FormLabel>Tanggal Lahir</FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input placeholder="tt/bb/tttt " type="number" {...field} />
                       </FormControl>
                       <FormDescription>
-                        isi tanggal lahir kamu contoh= (tgl/bln/thn).
+                        isi tanggal lahir kamu, tanpa spasi dan hanya angka.
                       </FormDescription>
                       <FormMessage/>
                     </FormItem>

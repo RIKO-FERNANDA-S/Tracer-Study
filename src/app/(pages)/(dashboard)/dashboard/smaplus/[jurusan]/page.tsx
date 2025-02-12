@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import {
   ColumnDef,
   flexRender,
@@ -10,8 +11,6 @@ import {
 } from "@tanstack/react-table";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import DetailUser from '@/components/fragments/detailUser';
-import Swal from 'sweetalert2';
-
 
 
 export type User = {
@@ -109,10 +108,12 @@ export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}
 
   const {jurusan} = React.use(params)
   const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(false);
     
       useEffect(() => {
         const fetchUsers = async () => {
           try {
+            setLoading(true)
               const res = await fetch(`/api/data/${jurusan}`);
               if (!res.ok) {
                 console.error();
@@ -124,6 +125,9 @@ export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}
           } catch (error) {
             console.error("Failed to fetch users:", error);
             setUsers([])
+          }finally{
+            setLoading(false)
+            
           }
         };
     
@@ -135,15 +139,16 @@ export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}
         columns,
         getCoreRowModel: getCoreRowModel(),
       });
-  return (
-    <main>
 
-      <Table>
+     
+  return (
+    <main >
+      <Table className=''>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
-                <TableHead key={header.id}>
+                <TableHead key={header.id} className='text-center'>
                   {header.isPlaceholder
                     ? null
                     : flexRender(header.column.columnDef.header, header.getContext())}
@@ -157,15 +162,17 @@ export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}
             
               <TableRow>
                   <TableCell colSpan={table.getHeaderGroups()[0]?.headers.length || 1} className="text-center">
-                    <p>tabel belum ada data siswa</p>
+                    {loading == true ? <span className="loading loading-dots loading-md"></span> : "Data Siswa Tidak Ada"}
+                 
+                    
                   </TableCell>
               </TableRow>
           
           ) : (
             table.getRowModel().rows.map((row) => (
-              <TableRow key={row.id}>
+              <TableRow key={row.id} className=''>
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
+                  <TableCell key={cell.id} className='text-center'>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
