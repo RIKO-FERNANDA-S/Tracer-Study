@@ -34,6 +34,7 @@ function Navside() {
             <i className="bx bx-data bx-sm"></i>
             <h1 className="text-lg ml-2 font-medium">Data</h1>
           </div>
+
           <div className="ml-4 flex justify-self-center gap-2 flex-col mt-2">
             <div className="collapse collapse-arrow ">
               <input type="checkbox" />
@@ -61,6 +62,7 @@ function Navside() {
                 </Link>
               </ul>
             </div>
+            
             <div className="collapse collapse-arrow ">
               <input type="checkbox" />
               <h1 className="collapse-title text-md font-normal ">

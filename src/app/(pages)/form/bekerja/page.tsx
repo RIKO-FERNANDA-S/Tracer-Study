@@ -62,9 +62,9 @@ function FormBekerja() {
                 name="tempatKerja"
                 render={({field}) => (
                   <FormItem>
-                  <FormLabel>Nama Usaha</FormLabel>
+                  <FormLabel>Tempat Kerja</FormLabel>
                   <FormControl>
-                    <Input placeholder="Jualan Bakso" {...field}></Input>
+                    <Input placeholder="PT. Citra Abadi" {...field}></Input>
                   </FormControl>
                   <FormMessage/>
                   </FormItem>
@@ -77,9 +77,9 @@ function FormBekerja() {
                 name="penghasilan"
                 render={({field}) => (
                   <FormItem>
-                  <FormLabel>Alamat Kampus</FormLabel>
+                  <FormLabel>Penghasilan</FormLabel>
                   <FormControl>
-                    <Input placeholder="10000000" type="number" {...field}></Input>
+                    <Input placeholder="10.000.000" type="number" {...field}></Input>
                   </FormControl>
                   <FormMessage/>
                   </FormItem>
@@ -92,9 +92,9 @@ function FormBekerja() {
                 name="alamat"
                 render={({field}) => (
                   <FormItem>
-                  <FormLabel>Alamat Kampus</FormLabel>
+                  <FormLabel>Alamat Tempat Kerja</FormLabel>
                   <FormControl>
-                    <Input placeholder="10000000" {...field}></Input>
+                    <Input placeholder="Jln. Perjuangan" {...field}></Input>
                   </FormControl>
                   <FormMessage/>
                   </FormItem>
@@ -107,9 +107,9 @@ function FormBekerja() {
                 name="jabatan"
                 render={({field}) => (
                   <FormItem>
-                  <FormLabel>Alamat Kampus</FormLabel>
+                  <FormLabel>Jabatan</FormLabel>
                   <FormControl>
-                    <Input placeholder="10000000"  {...field}></Input>
+                    <Input placeholder="Karyawan"  {...field}></Input>
                   </FormControl>
                   <FormMessage/>
                   </FormItem>

@@ -22,7 +22,7 @@ function LogoHome() {
       slidesPerView={6}
       speed={2000}
       breakpoints={{
-        300: {slidesPerView: 3},
+        300: {slidesPerView: 2},
         600: {slidesPerView: 6}
       }}
       className="flex items-center justify-center h-full gap-10"

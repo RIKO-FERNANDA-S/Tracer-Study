@@ -60,8 +60,6 @@ model User {
   placeOfBirth  String?
   noTelphone    String?
   tahunLulus    Int?
-  // tahunId       String
-  // tahunRecap    TahunRecap           @relation(fields: [tahunId], references: [id], onDelete: Cascade)
   updatedAt     DateTime             @updatedAt
   alumniBekerja       AlumniBekerja[]
   alumniWirausaha     AlumniBerwirausaha[]

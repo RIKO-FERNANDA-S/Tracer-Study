@@ -6,7 +6,7 @@ export async function PUT(req: NextRequest) {
   console.log("Received PUT request");
   const session = await auth();
   try {
-    const body = await req.json(); // Ambil data dari body request
+    const body = await req.json();
     const idSiswa = await session?.user.id;
 
     const siswa = await prisma.user.findUnique({
@@ -14,7 +14,6 @@ export async function PUT(req: NextRequest) {
         id: idSiswa,
       },
     });
-
 
     if (!siswa) {
       return NextResponse.json(
@@ -24,13 +23,13 @@ export async function PUT(req: NextRequest) {
     }
 
     const {
-   dateOfBirth,
-   placeOfBirth,
-   major,
-   address,
-   tahunLulus,
-   gender,
-   noTelphone
+      dateOfBirth,
+      placeOfBirth,
+      major,
+      address,
+      tahunLulus,
+      gender,
+      noTelphone,
     } = body;
 
     const saveData = await prisma.user.update({
@@ -46,7 +45,6 @@ export async function PUT(req: NextRequest) {
         noTelphone,
         tahunLulus,
       },
-
     });
 
     return NextResponse.json(
@@ -70,8 +68,12 @@ export async function GET() {
 
   try {
     const user = await prisma.user.findMany({
-      where: { id: session?.user.id}, 
-      include: {alumniKuliah : true, alumniBekerja: true, alumniWirausaha: true}
+      where: { id: session?.user.id },
+      include: {
+        alumniKuliah: true,
+        alumniBekerja: true,
+        alumniWirausaha: true,
+      },
     });
 
     if (!user) {
@@ -80,17 +82,22 @@ export async function GET() {
 
     return NextResponse.json(user);
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch user" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to fetch user" },
+      { status: 500 }
+    );
   }
 }
 
 export async function DELETE(req: Request) {
   try {
-    const {id} = await req.json();
+    const { id } = await req.json();
     await prisma.user.delete({ where: { id } });
 
-    return new Response(JSON.stringify({success: true}), {status:200})
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (error) {
-    return new Response(JSON.stringify({success: false, message: error}), {status: 500})
+    return new Response(JSON.stringify({ success: false, message: error }), {
+      status: 500,
+    });
   }
 }

@@ -30,7 +30,7 @@ export default async function Layout({
         <div className="w-max flex flex-col items-center">
           <div className="mt-10">
             <h1 className="block text-biruSMKPK text-6xl font-semibold mb-2 font-Monstserrat">
-              Formulir Data Pribadi
+              Formulir Survei
             </h1>
           </div>
         </div>

@@ -74,9 +74,9 @@ function FormKuliah() {
                 name="penghasilan"
                 render={({field}) => (
                   <FormItem>
-                  <FormLabel>Alamat Kampus</FormLabel>
+                  <FormLabel>Penghasilan</FormLabel>
                   <FormControl>
-                    <Input placeholder="10000000" type="number" {...field}></Input>
+                    <Input placeholder="10.000.000" type="number" {...field}></Input>
                   </FormControl>
                   <FormMessage/>
                   </FormItem>

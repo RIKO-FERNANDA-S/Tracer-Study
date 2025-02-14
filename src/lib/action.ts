@@ -2,7 +2,8 @@
 import { RegisterSchema, SignInSchema, CreateDataSchema, CreateAlumniKuliahSchema } from "./zod";
 import { hashSync } from "bcrypt-ts";
 import { prisma } from "./prisma";
-import { redirect } from "next/navigation";
+import { redirect} from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { signIn, signOut } from "../../auth";
 import { AuthError } from "next-auth";
 import { z } from "zod";
@@ -72,8 +73,10 @@ export const signInCredentials = async (
   }
 };
 
+
 export const signOutCredentials = async () => {
   await signOut();
+ revalidatePath("/")
 };
 
 
@@ -98,29 +101,3 @@ export const signOutCredentials = async () => {
 //     redirect("/dashboardUser")
 //   };
 
-
-export const CreateAlumniKuliah = async (formatData: FormData) => {
-  const validateFields = CreateAlumniKuliahSchema.safeParse(Object.fromEntries(formatData.entries()))
-  if (!validateFields.success) {
-    return {
-      error: validateFields.error.flatten().fieldErrors,
-    }
-  }
-
-  const {kuliah, alamat} = validateFields.data
-
-    try {
-      await prisma.alumniKuliah.create({
-        data: {
-          kuliah,
-          alamat,
-          userId: validateFields.data.user,
-        }
-      })
-    } catch (error) {
-      if(error){
-        return {message: "Gagal menambahkan jurusan sudah ada"}
-      }
-    }
-  
-}
