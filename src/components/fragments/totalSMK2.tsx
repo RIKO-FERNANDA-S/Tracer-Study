@@ -2,7 +2,7 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 
-function totalSMK2() {
+function TotalSMK2() {
     const [total, setTotal] = useState<{ total: number } | null>(null);
   
     useEffect(() => {
@@ -23,4 +23,4 @@ function totalSMK2() {
   )
 }
 
-export default totalSMK2
+export default TotalSMK2

@@ -1,12 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+export async function GET(req: NextRequest, context : {params : {jurusanSiswa: string}}) {
 
-
-
-export async function GET(req: NextRequest, {params} : {params : {jurusanSiswa: string}}) {
-
-  const {jurusanSiswa} = await params
+  const {jurusanSiswa} = context.params
 
   if (!jurusanSiswa) {
     return new NextResponse(JSON.stringify({ error: "tidak aman bro"}), {
@@ -24,14 +21,7 @@ export async function GET(req: NextRequest, {params} : {params : {jurusanSiswa: 
         
         return NextResponse.json(users)
     } catch (error) {
-        return ({message: "error", status: 500})
+        return ({message: error, status: 500})
     }
 }
 
-export async function POST() {
-    try{
-
-    }catch(error){
-        return({message: "error", status: 500})
-    }
-}

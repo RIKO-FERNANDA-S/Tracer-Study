@@ -2,7 +2,7 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 
-function totalSMA() {
+function TotalSMA() {
     const [total, setTotal] = useState<{ total: number } | null>(null);
   
     useEffect(() => {
@@ -23,4 +23,4 @@ function totalSMA() {
   )
 }
 
-export default totalSMA
+export default TotalSMA

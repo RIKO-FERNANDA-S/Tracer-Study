@@ -45,23 +45,22 @@ export const LogoutButton =  () => {
 
   )
 }
-export const SubmitForm =  () => {
-  const handleSubmit = async (e:any) => {
-    e.preventDefault();
-
-    alert("oke")
+// export const SubmitForm =  () => {
+//   const handleSubmit = async (e:any) => {
+//     e.preventDefault();
+//     alert("oke")
    
-  } 
-  return(
-      <div className="flex w-max justify-center items-center ">
-        <button
-          type="submit"
-          className=" btn btn-primary"
-        >
-          tambah
-        </button>
-      </div>
+//   } 
+//   return(
+//       <div className="flex w-max justify-center items-center ">
+//         <button
+//           type="submit"
+//           className=" btn btn-primary"
+//         >
+//           tambah
+//         </button>
+//       </div>
 
-  )
-}
+//   )
+// }
  

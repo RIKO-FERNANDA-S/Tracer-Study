@@ -1,11 +1,10 @@
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 
-export const exportToExcel = (data: any[], fileName: string) => {
-  // 1️⃣ Buat worksheet dari data JSON
+export const exportToExcel = (data: string[], fileName: string) => {
+  
   const worksheet = XLSX.utils.json_to_sheet(data);
   
-  // 2️⃣ Buat workbook dan tambahkan worksheet ke dalamnya
   const workbook = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
 

@@ -19,7 +19,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json(users);
   } catch (err) {
-    return NextResponse.json({ error: "Gagal mengambil data" }, { status: 500 });
+    return NextResponse.json({ error: "Gagal mengambil data", err}, { status: 500 });
   }
 }
 

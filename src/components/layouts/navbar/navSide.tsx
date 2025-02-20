@@ -2,7 +2,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import YearDate from "@/components/fragments/yearDate";
 import Logo from "../../../../public/imgLogo/mawalogox-1536x300.png";
 import { usePathname } from "next/navigation";
 
@@ -62,7 +61,7 @@ function Navside() {
                 </Link>
               </ul>
             </div>
-            
+
             <div className="collapse collapse-arrow ">
               <input type="checkbox" />
               <h1 className="collapse-title text-md font-normal ">

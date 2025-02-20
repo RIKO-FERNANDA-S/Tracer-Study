@@ -85,8 +85,8 @@ function DashboardUser() {
         <article className="w-full h-max gap-3 flex flex-col absolute z-10 items-center shadow-lg bg-blue-100 px-7 justify-between py-5 pb-8 border-b-2 border-solid border-black rounded-b-3xl ">
           <nav className="w-full justify-between flex gap-3 ">
             <div>
-              <Link href="/" className="text-xl flex items-center">
-                <i className="bx bx-left-arrow-alt"></i> Back{" "}
+              <Link href="/" className="text-xl flex items-center gap-3 font-medium">
+                <i className="bx bx-left-arrow-alt bx-sm t"></i> Back
               </Link>
             </div>
             <Drawer>
@@ -153,7 +153,7 @@ function DashboardUser() {
 
           <div className="flex flex-col w-full overflow-visible">
    
-          <div className="collapse collapse-arrow relative z-10"> 
+          <div className="collapse collapse-arrow relative z-10 "> 
           <input type="checkbox" />
             <h1 className="collapse-title font-semibold cursor-pointer text-2xl">Data Diri</h1>
             <ul className="collapse-content flex flex-col gap-5">
@@ -221,7 +221,7 @@ function DashboardUser() {
           <input type="checkbox" />
             <h1 className="collapse-title font-semibold cursor-pointer text-2xl mt-4">Data Kuliah</h1>
             <ul className="collapse-content flex flex-col gap-2">
-              <div className="flex w-full justify-center">
+              <div className="flex w-full">
                 <p className="text-xl ">Tempat Kuliah :</p>
                 <p className="text-lg px-6 capitalize">
                   {user?.alumniKuliah?.map((kuliah, index) => (
@@ -229,7 +229,7 @@ function DashboardUser() {
                   ))}
                 </p>
               </div>
-              <div className="flex w-full justify-center">
+              <div className="flex w-full">
                 <p className="text-xl ">Alamat Kuliah :</p>
                 <p className="text-lg px-6 capitalize">
                   {user?.alumniKuliah?.map((kuliah, index) => (
@@ -245,7 +245,7 @@ function DashboardUser() {
           <input type="checkbox" />
             <h1 className="collapse-title font-semibold cursor-pointer text-2xl mt-4">Data Wirausaha</h1>
             <div className="collapse-content flex flex-col gap-2">
-              <div className="flex w-full justify-center">
+              <div className="flex w-full">
                 <p className="text-xl ">Nama Usaha :</p>
                 <p className="text-lg px-6 capitalize">
                   {user?.alumniWirausaha?.map((usaha, index) => (
@@ -253,7 +253,7 @@ function DashboardUser() {
                   ))}
                 </p>
               </div>
-              <div className="flex w-full justify-center">
+              <div className="flex w-full">
                 <p className="text-xl ">Penghasilan :</p>
                 <p className="text-lg px-6 capitalize">
                   {user?.alumniWirausaha?.map((usaha, index) => (
@@ -264,11 +264,7 @@ function DashboardUser() {
             </div>
           </div>
     
-          </div>
- 
-
-
-          
+          </div>  
 
         </div>
       </main>

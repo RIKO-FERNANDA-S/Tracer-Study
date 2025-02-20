@@ -1,12 +1,9 @@
 import {
   object,
   string,
-  number,
   boolean,
-  array,
   ZodIssueCode,
   NEVER,
-  coerce,
 } from "zod";
 
 export const SignInSchema = object({

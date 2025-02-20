@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { auth } from "../../../../auth";
 import Back from "../../../../public/img/hero.jpg";
 import Image from "next/image";
-import Logo from "../../../../public/imgLogo/icon.png";
+
 
 export default async function Layout({
   children,

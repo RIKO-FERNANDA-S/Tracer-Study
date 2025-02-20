@@ -1,19 +1,20 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import bgHero from "../../../public/img/hero.jpg";
 import imgHero from "../../../public/img/2.png";
 import dynamic from "next/dynamic";
 import LogoHome from "./logoHome";
-import CardHome from "./cardHome";
 
-const Tentang = dynamic(() => import("@/components/layouts/tentang"), {
+
+const CardHome = dynamic(() => import('@/components/layouts/cardHome'))
+
+const Tentang = dynamic(() => import('@/components/layouts/tentang'), {
   ssr: false,
 });
-const Kontak = dynamic(() => import("@/components/layouts/kontak"), {
+const Kontak = dynamic(() => import('@/components/layouts/kontak'), {
   ssr: false,
 });
-const Footer = dynamic(() => import("@/components/layouts/footer"), {
+const Footer = dynamic(() => import('@/components/layouts/footer'), {
   ssr: false,
 });
 
@@ -22,7 +23,7 @@ function Hero() {
     <main className="font-poppins mt-10 md:mt-0">
       <section
         className="w-full h-max justify-center flex flex-col"
-        id="#beranda"
+        id='#beranda'
       >
         <div className=" flex justify-center md:justify-between w-full h-[89vh] px-10 md:px-8 items-center ">
           <div className="justify-start flex flex-col p-9 absolute z-10 w-full h-full mt-40 md:mt-72 md:w-1/2 md:ml-6">
@@ -33,9 +34,9 @@ function Hero() {
               Jelajahi Jejak Alumni, Bangun Masa Depan!
             </h1>
             <p className="mt-4 mb-2 md:mb-6 text-lg md:text-xl  font-normal font-Lora md:w-[80%] xl:w-[90%]">
-              "Temukan data dan kisah sukses alumni SMK-SMA Darma Siswa.
+              Temukan data dan kisah sukses alumni SMK-SMA Darma Siswa.
               Bersama, kita membangun jaringan yang lebih kuat untuk generasi
-              mendatang."
+              mendatang.
             </p>
 
             <div className="flex gap-5 flex-wrap mt-4 md:mt-0">
@@ -64,8 +65,8 @@ function Hero() {
         <LogoHome/>
       </section>
 
-      <CardHome/>
       <Tentang />
+      <CardHome/>
       <Kontak />
       <Footer />
     </main>

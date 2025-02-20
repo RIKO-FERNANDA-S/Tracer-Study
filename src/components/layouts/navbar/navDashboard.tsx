@@ -6,7 +6,6 @@ import Image from "next/image";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -17,7 +16,7 @@ import { signOutCredentials } from "@/lib/action";
 import { useSession } from "next-auth/react";
 import { DialogTitle } from "@radix-ui/react-dialog";
 
-function navDashboard() {
+function NavDashboard() {
   const { data: session } = useSession();
   return (
     <div>
@@ -106,4 +105,4 @@ function navDashboard() {
   );
 }
 
-export default navDashboard;
+export default NavDashboard;

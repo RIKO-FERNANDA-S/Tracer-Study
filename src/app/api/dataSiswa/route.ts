@@ -56,6 +56,7 @@ export async function PUT(req: NextRequest) {
       { message: "Terjadi kesalahan", err },
       { status: 500 }
     );
+    
   }
 }
 
@@ -83,7 +84,7 @@ export async function GET() {
     return NextResponse.json(user);
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to fetch user" },
+      { message: "Failed to fetch user", error },
       { status: 500 }
     );
   }

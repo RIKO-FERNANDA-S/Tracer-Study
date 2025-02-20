@@ -1,12 +1,12 @@
 "use server";
-import { RegisterSchema, SignInSchema, CreateDataSchema, CreateAlumniKuliahSchema } from "./zod";
+import { RegisterSchema, SignInSchema } from "./zod";
 import { hashSync } from "bcrypt-ts";
 import { prisma } from "./prisma";
 import { redirect} from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { signIn, signOut } from "../../auth";
 import { AuthError } from "next-auth";
-import { z } from "zod";
+
 
 export const signUpCredentials = async (
   prevState: unknown,

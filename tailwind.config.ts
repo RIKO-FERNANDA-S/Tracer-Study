@@ -13,13 +13,13 @@ export default {
   			background: 'var(--background)',
   			foreground: 'var(--foreground)',
 			kuningMawa1: '#FFC107',
-			biruMawa2: '#A5D8E3',
+			biruMawa2: '#1E37A1',
 			biruSMKPK: "#2A70B6",
   		},
   		backgroundColor: {
   			button: '#BDC3C7',
-			kuningMawa1: '#FFC107',
-			biruMawa2: '#A5D8E3',
+			kuningMawa1: '#F9C223',
+			biruMawa2: '#1E37A1',
 			biruSMKPK: "#2A70B6"
   		},
 		
