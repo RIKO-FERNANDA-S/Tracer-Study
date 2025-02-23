@@ -22,7 +22,7 @@ export const signUpCredentials = async (
     };
   }
 
-  const { name, email, password } = validateFields.data;
+  const { name, email, password  } = validateFields.data;
   const hashedPassword = hashSync(password, 10);
 
   try {

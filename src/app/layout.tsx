@@ -1,23 +1,13 @@
 "use client"
 import { SessionProvider } from "next-auth/react";
 import "./globals.css";
-import Navbar from "@/components/layouts/navbar/navbarHome";
-import { usePathname } from "next/navigation";
 
-
-const disabledNavbar = ["/login", "/register", "/dashboard", "/form"]
-
-const shouldDisableNavbar = (pathname: string) => {
-  return disabledNavbar.some((prefix) => pathname.startsWith(prefix));
-};
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname()
-  const isDisabledNavbar = shouldDisableNavbar(pathname)
   return (
     <html lang="en">
       <head>
@@ -29,8 +19,7 @@ export default function RootLayout({
       </head>
       <body className={`antialiased text-black bg-white`}>
         <SessionProvider>
-          
-        {!isDisabledNavbar && <Navbar/>}
+
           <main className="font-Poppins">{children}</main>
         </SessionProvider>
       </body>

@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { auth } from "../../../../auth";
-import Back from "../../../../public/img/hero.jpg";
+import Back from "../../../../public/img/img3.jpg";
 import Image from "next/image";
 
 
@@ -9,38 +9,35 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await auth();
-  if (!session?.user) {
-    redirect("/login");
+
+  const session = await auth()
+
+  if(session?.user.role === "admin"){
+    redirect("/dashboard")
   }
-  if (session?.user.role == "admin") {
-    redirect("/dashboard");
-  }
+
+  console.log([session?.user.role, session?.user.email])
   return (
     <main className="h-max w-full flex justify-center">
-      <div>
-      <nav className="flex flex-col w-max rounded-[.5rem] px-10 justify-center gap-7 items-center h-max py-8">
-        <div className=" shadow-xl">
+      <div className="w-full">
+      <nav className="flex flex-col w-full justify-center gap-7 items-center h-max">
+        <div className="w-full shadow-xl">
           <Image
             src={Back}
             alt="mam"
-            className="w-[70rem] h-80 brightness-75 rounded-[1rem]"
+            className="w-full h-[28rem] brightness-75 "
           ></Image>
         </div>
         <div className="w-max flex flex-col items-center">
           <div className="mt-10">
             <h1 className="block text-biruSMKPK text-6xl font-semibold mb-2 font-Monstserrat">
-              Formulir Survei
+              Formulir Tracer Study
             </h1>
           </div>
         </div>
       <div className="w-[60rem] h-max flex flex-col gap-4 justify-center bg-white rounded-xl shadow-md p-6 py-10">
-        <h1 className="capitalize text-lg font-semibold">
-          Nama: {session?.user.name}
-        </h1>
-        <h1 className="text-lg font-semibold">Email: {session?.user.email}</h1>
         <p>
-          *masukan data sesuai contoh, jika ada angka bisa dihapus untuk
+          *masukan data sesuai contoh, jika ada angka 0 bisa dihapus untuk
           mengetahui contoh nya
         </p>
       </div>

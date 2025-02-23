@@ -5,8 +5,8 @@ import { redirect } from 'next/navigation'
 
 async function Login() {
   const session = await auth()
-  if (session?.user) {
-    redirect("/dashboard")
+  if (session?.user.role !== "admin") {
+    redirect("/")
   }
   return (
     <div>

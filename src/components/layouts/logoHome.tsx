@@ -14,7 +14,7 @@ import { Autoplay } from "swiper/modules";
 
 function LogoHome() {
   return (
-    <main className="w-full h-36 py-5 px-7 border-t-4 border-biruMawa2">
+    <main className="w-full h-36 pb-5 px-7 border-t-4 border-biruMawa2">
       <Swiper
       modules={[Autoplay]}
       autoplay={{delay: 0}}

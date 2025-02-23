@@ -2,7 +2,6 @@
 import React from "react";
 import ImgLocation from "../../../public/imgContact/Screenshot 2025-02-20 100616.png";
 import Image from "next/image";
-import { Form, FormField } from "../ui/form";
 
 function Kontak() {
   return (

@@ -104,9 +104,8 @@ const handleDelete = (id: string) => {
 
 
 
-export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}) {
+export default function DataSiswa() {
 
-  const {jurusan} = React.use(params)
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
     
@@ -114,7 +113,7 @@ export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}
         const fetchUsers = async () => {
           try {
             setLoading(true)
-              const res = await fetch(`/api/data/${jurusan}`);
+              const res = await fetch(`/api/dataSiswa`);
               if (!res.ok) {
                 console.error();
                 setUsers([]);
@@ -132,7 +131,7 @@ export default function DataSiswa({params}: {params: Promise<{jurusan: string}>}
         };
     
         fetchUsers();
-      }, [jurusan]);
+      }, []);
     
       const table = useReactTable({
         data: users,

@@ -26,9 +26,6 @@ async function Dashboard() {
   if (!session?.user) {
     redirect("/login");
   }
-  if (session?.user.role !== "admin") {
-    redirect("/dashboardUser");
-  }
 
 
 

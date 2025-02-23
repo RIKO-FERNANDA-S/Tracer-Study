@@ -1,50 +1,51 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { auth } from "../../../../auth";
 
-export async function PUT(req: NextRequest) {
-  console.log("Received PUT request");
-  const session = await auth();
+export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const idSiswa = await session?.user.id;
-
-    const siswa = await prisma.user.findUnique({
-      where: {
-        id: idSiswa,
-      },
-    });
-
-    if (!siswa) {
-      return NextResponse.json(
-        { message: "Siswa tidak ditemukan" },
-        { status: 404 }
-      );
-    }
-
     const {
-      dateOfBirth,
+      name        ,
+      nik         ,
       placeOfBirth,
-      major,
-      address,
-      tahunLulus,
-      gender,
-      noTelphone,
+      dateOfBirth  ,
+      gender      ,
+      tahunLulus  ,
+      major       ,
+      address     ,
+      noTelphone  ,
+      email       ,       
+      status      ,
+      startStatus ,
+      whatStatus  ,
+      whereStatus ,
+      relevance   ,
+      bossName    ,
+      bossPosition,
+      salary      ,
     } = body;
 
-    const saveData = await prisma.user.update({
-      where: {
-        id: siswa.id,
-      },
+    const saveData = await prisma.user.create({
       data: {
-        dateOfBirth,
-        major,
-        gender,
+        name        ,
+        nik         ,
         placeOfBirth,
-        address,
-        noTelphone,
-        tahunLulus,
-      },
+        dateOfBirth  ,
+        gender      ,
+        tahunLulus  ,
+        major       ,
+        address     ,
+        noTelphone  ,
+        email       ,       
+        status      ,
+        startStatus ,
+        whatStatus  ,
+        whereStatus ,
+        relevance   ,
+        bossName    ,
+        bossPosition,
+        salary      ,
+      }
     });
 
     return NextResponse.json(
@@ -61,20 +62,10 @@ export async function PUT(req: NextRequest) {
 }
 
 export async function GET() {
-  const session = await auth();
-
-  if (!session || !session.user?.email) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
+  
   try {
     const user = await prisma.user.findMany({
-      where: { id: session?.user.id },
-      include: {
-        alumniKuliah: true,
-        alumniBekerja: true,
-        alumniWirausaha: true,
-      },
+      where: { role: "user" }
     });
 
     if (!user) {

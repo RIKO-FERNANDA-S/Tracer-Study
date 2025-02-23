@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const tahunList = [2020, 2021, 2022, 2023, 2024, 2025]; // Bisa ditambah sesuai kebutuhan
+const tahunList = [2023, 2024, 2025, 2026]; 
 
 export default function RecapPage() {
   const [loading, setLoading] = useState<number | null>(null);

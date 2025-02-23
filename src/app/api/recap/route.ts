@@ -7,19 +7,33 @@ export async function GET(req: Request) {
   const url = new URL(req.url);
   const tahun = Number(url.searchParams.get("tahun"));
 
-  if (!tahun) {
+  // Validasi tahun
+  if (isNaN(tahun)) {
     return NextResponse.json({ error: "Tahun tidak valid" }, { status: 400 });
   }
 
   try {
     const users = await prisma.user.findMany({
-      where: { tahunLulus: tahun },
-      select: { id: true, name: true, email: true,  },
+      where: { tahunLulus: tahun.toString() }, // Konversi tahun ke string untuk query
+      select: { id: true, name: true, email: true },
     });
 
+    // Jika tidak ada data yang ditemukan
+    if (users.length === 0) {
+      return NextResponse.json(
+        { message: "Tidak ada data yang ditemukan" },
+        { status: 404 }
+      );
+    }
+
+    // Kirim response
     return NextResponse.json(users);
   } catch (err) {
-    return NextResponse.json({ error: "Gagal mengambil data", err}, { status: 500 });
+    console.error("Error fetching data:", err); // Log error untuk debugging
+    return NextResponse.json(
+      { error: "Gagal mengambil data" },
+      { status: 500 }
+    );
   }
 }
 
@@ -27,18 +41,42 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   const { tahun } = await req.json();
 
-  if (!tahun) {
+  // Validasi tahun
+  if (isNaN(tahun)) {
     return NextResponse.json({ error: "Tahun tidak valid" }, { status: 400 });
   }
 
   try {
     const users = await prisma.user.findMany({
-      where: { tahunLulus: tahun },
-      select: { name: true, email: true, tahunLulus: true, alumniBekerja: true },
+      where: { tahunLulus: tahun.toString() }, // Konversi tahun ke string untuk query
+      select: { 
+        name: true,
+        nik: true,
+        placeOfBirth: true,
+        dateOfBirth: true,
+        major: true,
+        gender: true,
+        email: true,
+        noTelphone: true,
+        address: true,
+        tahunLulus: true,
+        status: true,
+        whatStatus: true,
+        whereStatus: true,
+        bossName: true,
+        bossPosition: true,
+        startStatus: true,
+        salary: true,
+        relevance: true
+      },
     });
 
+    // Jika tidak ada data yang ditemukan
     if (users.length === 0) {
-      return NextResponse.json({ error: "Tidak ada data untuk tahun ini" }, { status: 404 });
+      return NextResponse.json(
+        { error: "Tidak ada data untuk tahun ini" },
+        { status: 404 }
+      );
     }
 
     // Buat file Excel
@@ -55,7 +93,10 @@ export async function POST(req: Request) {
       },
     });
   } catch (err) {
-    console.error(err);
-    return NextResponse.json({ error: "Gagal mengunduh data" }, { status: 500 });
+    console.error("Error downloading data:", err); // Log error untuk debugging
+    return NextResponse.json(
+      { error: "Gagal mengunduh data" },
+      { status: 500 }
+    );
   }
 }
