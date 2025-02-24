@@ -21,7 +21,7 @@ export default async function Layout({
     <main className="h-max w-full flex justify-center">
       <div className="w-full">
       <nav className="flex flex-col w-full justify-center gap-7 items-center h-max">
-        <div className="w-full shadow-xl">
+        <div className="w-full shadow-xl hidden md:flex">
           <Image
             src={Back}
             alt="mam"
@@ -30,13 +30,13 @@ export default async function Layout({
         </div>
         <div className="w-max flex flex-col items-center">
           <div className="mt-10">
-            <h1 className="block text-biruSMKPK text-6xl font-semibold mb-2 font-Monstserrat">
+            <h1 className="block text-biruSMKPK text-3xl md:text-6xl font-semibold mb-8 font-Monstserrat">
               Formulir Tracer Study
             </h1>
           </div>
         </div>
-      <div className="w-[60rem] h-max flex flex-col gap-4 justify-center bg-white rounded-xl shadow-md p-6 py-10">
-        <p>
+      <div className="w-full md:w-[60rem] h-max hidden md:flex flex-col gap-4 justify-center bg-white rounded-xl shadow-md p-6 py-10">
+        <p className="text-md md:text-xl">
           *masukan data sesuai contoh, jika ada angka 0 bisa dihapus untuk
           mengetahui contoh nya
         </p>
