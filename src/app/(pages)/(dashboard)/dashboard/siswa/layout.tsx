@@ -8,7 +8,7 @@ export default function Layout({
           <nav className="w-full h-max mb-10">
       <header className='w-full'>
         <div className='mb-8'>
-        <h1 className='text-2xl font-semibold'>Data SMKS Darma Siswa 2</h1>
+        <h1 className='text-2xl font-semibold'>Data Siswa SMKS Darma Siswa</h1>
         </div>
         <div className='w-full flex justify-between'>
           <div className='bg-white shadow-md h-max py-3 px-5 rounded-[.8rem] flex items-center gap-4'>

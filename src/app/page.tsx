@@ -15,7 +15,7 @@ export default function Home() {
     requestAnimationFrame(raf)
   })
   return (
-    <main>
+    <main >
       <Hero />
     </main>
   );

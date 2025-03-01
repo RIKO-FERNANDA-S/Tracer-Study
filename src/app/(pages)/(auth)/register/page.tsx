@@ -3,7 +3,7 @@ import React from 'react'
 import {auth} from "../../../../../auth"
 import { redirect } from 'next/navigation'
 
-async function Login() {
+async function Register() {
   const session = await auth()
   if (session?.user.role !== "admin") {
     redirect("/")
@@ -15,4 +15,4 @@ async function Login() {
   )
 }
 
-export default Login
+export default Register

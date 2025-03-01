@@ -34,9 +34,13 @@ import Swal from "sweetalert2";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
+import dayjs from "dayjs";
+import Link from "next/link";
+import LogoSMK from "../../../../public/imgLogo/icon.png";
+import LogoSMA from "../../../../public/imgLogo/sma.png";
+import Image from "next/image";
 
 function FormData() {
-
   const onSubmitForm = async (values: z.infer<typeof CreateDataSchema>) => {
     try {
       const response = await fetch("/api/dataSiswa", {
@@ -52,10 +56,9 @@ function FormData() {
     } catch (error) {
       console.log(error);
       Swal.fire({ icon: "warning", titleText: "Email sudah ada" });
-    }finally{
+    } finally {
       redirect("/");
     }
-    
   };
 
   const form = useForm<z.infer<typeof CreateDataSchema>>({
@@ -76,14 +79,33 @@ function FormData() {
       whatStatus: "",
       whereStatus: "",
       relevance: "",
-      bossName: "",
-      bossPosition: "",
-      salary: "",
+      bossName: "-",
+      bossPosition: "-",
+      salary: "0",
     },
   });
 
+  const tahun = Array.from({ length: 3 }, (_, i) =>
+    dayjs().subtract(i, "year").year()
+  );
+
   return (
     <main className="w-full h-max ">
+      <nav className="flex flex-col w-full justify-center gap-7 items-center h-max">
+        <div className="w-full flex justify-center items-center gap-7">
+          <Image src={LogoSMK} alt="logo" className="hidden md:flex w-36"></Image>
+          <div className="mt-10 w-max flex flex-col justify-center items-center mb-5 md:mb-10">
+            <h1 className="block text-kuningMawa1 text-4xl md:text-6xl font-semibold mb-4 font-Monstserrat">
+              Formulir Tracer Study
+            </h1>
+            <h1 className="bg-white text-sm md:text-md rounded-xl mx-7 py-4 px-10 md:px-20">
+              Isi Form Di Bawah Sesuai dengan keadaan kalian saat ini yaaa...{" "}
+            </h1>
+          </div>
+          <Image src={LogoSMA} alt="logo" className="hidden md:flex w-28"></Image>
+        </div>
+      </nav>
+
       <section className="w-full h-max flex py-4 pb-10">
         <Form {...form}>
           <div className="w-full h-max flex justify-center">
@@ -118,7 +140,11 @@ function FormData() {
                     <FormItem>
                       <FormLabel>NIK</FormLabel>
                       <FormControl>
-                        <Input placeholder="NIK" {...field} />
+                        <Input
+                          placeholder="NIK"
+                          type="number"
+                          {...field}
+                        />
                       </FormControl>
                       <FormDescription>
                         Isi NIK anda dnegan benar.
@@ -246,9 +272,11 @@ function FormData() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="2024" >2024</SelectItem>
-                          <SelectItem value="2025">2025</SelectItem>
-                          <SelectItem value="2026">2026</SelectItem>
+                          {tahun.map((T, i) => (
+                            <SelectItem key={i} value={T.toString()}>
+                              {T}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                       <FormDescription>Isi Tahun Lulus Anda</FormDescription>
@@ -302,7 +330,7 @@ function FormData() {
                     <FormItem>
                       <FormLabel>Alamat Rumah</FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input placeholder="jln. brebek" {...field} />
                       </FormControl>
                       <FormDescription>
                         Alamat tempat tinggal mu.
@@ -323,7 +351,7 @@ function FormData() {
                       <FormLabel>Telphone</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder=""
+                          placeholder="0812345679"
                           type="number"
                           inputMode="numeric"
                           step={1}
@@ -427,9 +455,7 @@ function FormData() {
                                 date ? format(date, "yyyy-MM-dd") : ""
                               ); // Simpan sebagai string
                             }}
-                            disabled={(date) =>
-                                 date > new Date("2025-12-31")
-                            }
+                            disabled={(date) => date > new Date("2025-12-31")}
                             initialFocus
                           />
                         </PopoverContent>
@@ -478,7 +504,7 @@ function FormData() {
                         <Input placeholder="Jln. Kurek Sari no.8" {...field} />
                       </FormControl>
                       <FormDescription>
-                        Masukkan Alamat Lengkap.
+                        Masukkan Alamat Lengkap bekerja/kuliah/usaha.
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
@@ -582,9 +608,20 @@ function FormData() {
                 />
               </div>
 
-              <Button type="submit" className="btn">
-                submit bro
-              </Button>
+              <div className="w-full h-max flex justify-between items-center">
+                <Link
+                  href="/"
+                  className="bg-biruMawa2 py-3 px-4 rounded-xl text-sm md:text-lg shadow-lg hover:bg-biruMawa2 text-white"
+                >
+                  <h1>Kembali Ke Home</h1>
+                </Link>
+                <Button
+                  type="submit"
+                  className="bg-kuningMawa1 py-5 px-4 rounded-xl text-sm md:text-lg shadow-lg hover:bg-kuningMawa1"
+                >
+                  <h1>Submit Yuk</h1>
+                </Button>
+              </div>
             </form>
           </div>
         </Form>

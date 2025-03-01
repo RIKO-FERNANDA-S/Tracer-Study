@@ -22,7 +22,6 @@ export default {
 			biruMawa2: '#1E37A1',
 			biruSMKPK: "#2A70B6"
   		},
-		
   		fontFamily: {
   			Poppins: [
   				'Poppins',
@@ -42,9 +41,8 @@ export default {
 			]
   		},
   		backgroundImage: {
-  			'bgAbout1': './public/img/T5.jpeg',
-  			'bgAbout2': './public/img/T7.jpeg',
-			bgForm : "./public/img/img-form.jpg"
+			"bgHome" : "url('/img/img3.jpg')",
+			"bgForm" : "url('/img/papan1.jpeg')",
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

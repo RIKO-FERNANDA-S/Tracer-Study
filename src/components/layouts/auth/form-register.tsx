@@ -6,7 +6,7 @@ import { RegisterButton } from "@/components/fragments/button";
 export default function FormRegister() {
   const [state, formAction] = useActionState(signUpCredentials, null);
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100">
+    <div className="flex h-screen items-center justify-center bg-gray-100 text-black">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
 

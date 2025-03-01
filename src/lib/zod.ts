@@ -23,24 +23,24 @@ export const RegisterSchema = object({
 
 export const CreateDataSchema = object({
   name: string().min(4, "Berikan nama lebih panjang lagi"),
-  nik: string(),
+  nik: string().min(16, "Nomor NIK kurang dari 16").max(16, "Nomor NIK lebih dari 16"),
   placeOfBirth: string().min(4, "Berikan lebih lengkap lagi"),
-  dateOfBirth: string(),
+  dateOfBirth: string().min(2, "Pilih tanggal lahir anda"),
   gender: string().min(4, { message: "Pilih jenis kelamin anda" }),
-  tahunLulus: string(),
+  tahunLulus: string().min(2, "Pilih tahun lulusan anda"),
   email: string().email("Email salah"),
   noTelphone: string()
     .min(11, { message: "Nomor telpon kurang lengkap" })
     .max(13, { message: "Terlalu banyak nomor telepon" }),
   major: string().min(2, { message: "Pilih salah satu jurusan" }),
   address: string().min(10, "Berikan alamat sesuai dengan contoh"),
-  salary: string().min(5),
-  status: string(),
-  startStatus: string().min(4, "kurang lengkap"),
-  whatStatus: string().min(4, "Berikan jabatan yang lebih jelas lagi"),
-  whereStatus: string().min(5, "kurang lengkap"),
-  relevance: string(),
-  bossName: string().min(2, "berikan nama lebih lengkap"),
+  salary: string().min(1, "isikan jumlah penghasilan dengan benar"),
+  status: string().min(1, "pilih salah satu"),
+  startStatus: string().min(4, "pilih tanggal mulai"),
+  whatStatus: string().min(1, "Berikan keterangan lebih lengkap lagi"),
+  whereStatus: string().min(5, "Berikan keterangan lebih lengkap lagi"),
+  relevance: string().min(1, "Pilih salah satu"),
+  bossName: string(),
   bossPosition: string(),
 });
 

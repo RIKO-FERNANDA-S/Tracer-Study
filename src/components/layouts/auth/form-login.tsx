@@ -6,7 +6,7 @@ import { useActionState } from "react";
 export default function FormLogin() {
   const [state, formAction] = useActionState(signInCredentials, null);
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100">
+    <div className="flex h-screen items-center justify-center bg-gray-100 text-black">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
       {state?.message ? (
         <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-100" role="alert">

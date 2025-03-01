@@ -27,8 +27,6 @@ async function Dashboard() {
     redirect("/login");
   }
 
-
-
   return (
     <main className="w-full h-screen ">
       <section className="w-full h-screen">
@@ -64,7 +62,7 @@ async function Dashboard() {
                   </div>
                   <div className="flex flex-col justify-center gap-1 w-full">
                     <Link
-                      href="/dashboard/mawa1/kelas/tkjt"
+                      href="/dashboard/siswa"
                       className="flex justify-between items-center w-full"
                     >
                       <h1 className="text-lg">SMK MAWA 1</h1>
@@ -83,7 +81,7 @@ async function Dashboard() {
                   </div>
                   <div className="flex flex-col justify-center gap-1 w-full">
                     <Link
-                      href="/dashboard/mawa2/kelas/akl"
+                      href="/dashboard/siswa"
                       className="flex justify-between items-center w-full"
                     >
                       <h1 className="text-lg">SMK MAWA 2</h1>
@@ -102,7 +100,7 @@ async function Dashboard() {
                   </div>
                   <div className="flex flex-col justify-center gap-1 w-full">
                     <Link
-                      href="/dashboard/smaplus/sma"
+                      href="/dashboard/siswa"
                       className="flex justify-between items-center w-full"
                     >
                       <h1 className="text-lg">SMA PLUS</h1>

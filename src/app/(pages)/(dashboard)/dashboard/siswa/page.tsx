@@ -19,12 +19,13 @@ export type User = {
   name: string;
   tahunLulus: number;
   gender: string;
+  major: string;
 };
 
 const deleteUser = async (id: string) => {
     const res = await fetch("/api/dataSiswa",{
       method: "DELETE",
-      headers: {"COntent-Type": "application/json"},
+      headers: {"Content-Type": "application/json"},
       body: JSON.stringify({id}),
     });
     if(res.ok){
@@ -38,13 +39,13 @@ const deleteUser = async (id: string) => {
 const handleDelete = (id: string) => {
   Swal.fire({
     title: "Yakin kah bro?",
-    text: "Dtat akan dihapus secara permanen",
+    text: "Data akan dihapus secara permanen",
     icon: "warning",
     showCancelButton: true,
-    confirmButtonColor: "",
-    cancelButtonColor: "",
+    confirmButtonColor: "red",
+    cancelButtonColor: "#0ac228",
     confirmButtonText: "Hapus",
-    cancelButtonText: "Ga jadi"
+    cancelButtonText: "Batal"
   }).then((result) => {
     if(result.isConfirmed){
       deleteUser(id)
@@ -113,7 +114,7 @@ export default function DataSiswa() {
         const fetchUsers = async () => {
           try {
             setLoading(true)
-              const res = await fetch(`/api/dataSiswa`);
+              const res = await fetch("/api/dataSiswa");
               if (!res.ok) {
                 console.error();
                 setUsers([]);

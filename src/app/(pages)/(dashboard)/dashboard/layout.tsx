@@ -5,7 +5,7 @@ export default function Layout({
     children: React.ReactNode
   }) {
     return (
-      <main className="flex bg-gray-50">
+      <main className="flex bg-gray-50 text-black">
         <NavSide/>
         <div className="w-full h-screen">
         {children}

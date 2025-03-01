@@ -17,7 +17,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`antialiased text-black bg-white`}>
+      <body className={`antialiased  `}>
         <SessionProvider>
 
           <main className="font-Poppins">{children}</main>

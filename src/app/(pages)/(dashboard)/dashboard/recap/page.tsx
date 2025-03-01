@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import dayjs from "dayjs";
 
-const tahunList = [2023, 2024, 2025, 2026]; 
 
 export default function RecapPage() {
   const [loading, setLoading] = useState<number | null>(null);
+  
+  const pastYear = Array.from({length: 7}, (_, i ) => dayjs().subtract(i, "year").year());
 
   const handleDownload = async (tahun: number) => {
     setLoading(tahun);
-
     try {
       const response = await fetch("/api/recap", {
         method: "POST",
@@ -40,8 +41,8 @@ export default function RecapPage() {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-xl font-bold mb-4">Rekap Data Alumni</h1>
+    <div className="">
+      
       <table className="w-full border-collapse border border-gray-300">
         <thead>
           <tr className="bg-gray-200">
@@ -51,7 +52,7 @@ export default function RecapPage() {
           </tr>
         </thead>
         <tbody>
-          {tahunList.map((tahun, index) => (
+          {pastYear.map((tahun, index) => (
             <tr key={tahun} className="text-center">
               <td className="border border-gray-300 p-2">{index + 1}</td>
               <td className="border border-gray-300 p-2">{tahun}</td>
