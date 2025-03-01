@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import imgHero from "../../../public/img/2.png";
 import dynamic from "next/dynamic";
 import img from "../../../public/imgLogo/icon.png"
 
