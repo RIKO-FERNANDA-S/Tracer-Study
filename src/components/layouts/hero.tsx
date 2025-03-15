@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import img from "../../../public/imgLogo/icon.png"
+import img from "../../../public/imgLogo/logo.png"
 
 const Footer = dynamic(() => import('@/components/layouts/footer'), {
   ssr: false,

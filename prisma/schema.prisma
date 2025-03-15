@@ -61,7 +61,7 @@ model User {
   image         String?
   emailVerified DateTime?            @map("email_verified")
   password      String?
-  role          String               @default("user")
+  role          String               @default("admin")
 
   updatedAt     DateTime             @updatedAt
   createdAt     DateTime             @default(now())

@@ -5,6 +5,8 @@ import dayjs from "dayjs";
 
 
 export default function RecapPage() {
+
+  
   const [loading, setLoading] = useState<number | null>(null);
   
   const pastYear = Array.from({length: 7}, (_, i ) => dayjs().subtract(i, "year").year());

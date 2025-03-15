@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { auth } from "../../../../../auth";
-import { redirect } from "next/navigation";
 import NavDashboard from "@/components/layouts/navbar/navDashboard";
 import Mawa1 from "../../../../../public/imgLogo/mawa1.png";
 import Mawa2 from "../../../../../public/imgLogo/smk2.png";
@@ -20,12 +18,17 @@ const CountSMK1 = dynamic(() => import("@/components/fragments/totalSMK1"))
 const CountSMK2 = dynamic(() => import("@/components/fragments/totalSMK2"))
 const CountSMA = dynamic(() => import("@/components/fragments/totalSMA"))
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Tracer Study Mawa",
+  description: "tracer study",
+  icons: "/logo.svg",
+};
 
 async function Dashboard() {
-  const session = await auth();
-  if (!session?.user) {
-    redirect("/login");
-  }
+
+ 
 
   return (
     <main className="w-full h-screen ">

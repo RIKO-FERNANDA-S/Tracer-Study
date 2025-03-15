@@ -19,7 +19,7 @@ import { DialogTitle } from "@radix-ui/react-dialog";
 function NavDashboard() {
   const { data: session } = useSession();
   return (
-    <div>
+    <div className="text-black">
       <div className="w-full h-max flex gap-5 justify-between border-b-2 p-5">
         <div className="h-full flex items-center w-max pl-7 gap-3">
           <h1 className="text-xl font-semibold capitalize text-wrap font-Poppins leading-10 text-[#374151]">
@@ -71,14 +71,14 @@ function NavDashboard() {
                   <div className="w-full flex flex-col gap-8">
                     <div
                       onClick={signOutCredentials}
-                      className="w-full h-max cursor-pointer flex gap-5 items-center"
+                      className="w-full h-max cursor-pointer flex gap-5 items-center text-red-400"
                     >
                       <i className="bx bx-log-out bx-sm"></i>
                       <h1 className="text-xl">Logout</h1>
                     </div>
 
                     <div>
-                      <div className="flex gap-3 items-center">
+                      <div className="flex gap-3 items-center text-black">
                         <Image
                           src={Pp}
                           alt="profil"

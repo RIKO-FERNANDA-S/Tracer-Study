@@ -36,7 +36,7 @@ import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import dayjs from "dayjs";
 import Link from "next/link";
-import LogoSMK from "../../../../public/imgLogo/icon.png";
+import LogoSMK from "../../../../public/imgLogo/logo.png";
 import LogoSMA from "../../../../public/imgLogo/sma.png";
 import Image from "next/image";
 

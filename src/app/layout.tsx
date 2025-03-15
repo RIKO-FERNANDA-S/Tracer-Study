@@ -1,7 +1,12 @@
-"use client"
 import { SessionProvider } from "next-auth/react";
 import "./globals.css";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Tracer Study Mawa",
+  description: "tracer study",
+  icons: "/logo.svg",
+};
 
 export default function RootLayout({
   children,
@@ -11,7 +16,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        
         <link
           href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css"
           rel="stylesheet"

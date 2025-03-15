@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import Logo from "../../../public/imgLogo/icon.png"
+import Logo from "../../../public/imgLogo/logo.png"
 
 function Footer() {
   return (
